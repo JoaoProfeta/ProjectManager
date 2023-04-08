@@ -1,0 +1,16 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body, #root {
+    background: #efefef;
+    width: 100%;
+    height: 100%;
+}
+.height{
+    min-height: 75%;
+    background: red;
+}

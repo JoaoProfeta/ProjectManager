@@ -1,0 +1,62 @@
+{
+  "projects": [
+    {
+      "name": "Desenvolvendo app",
+      "budget": "5444",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 677,
+      "services": [
+        {
+          "name": "THE FATHER????",
+          "cost": "677",
+          "description": "retirar mundo",
+          "id": "a87d7d73-0364-4270-9f95-c85f3d0ddbdc"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "name": "desenho de armari",
+      "budget": "786",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
+    },
+    {
+      "name": "construção civil",
+      "budget": "75899",
+      "category": {
+        "id": "4",
+        "name": "Planejamento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "infra"
+    },
+    {
+      "id": 2,
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": 3,
+      "name": "Design"
+    },
+    {
+      "id": 4,
+      "name": "Planejamento"
+    }
+  ]
+}
