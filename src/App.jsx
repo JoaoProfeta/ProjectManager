@@ -14,6 +14,7 @@ import { Footer } from "./Components/Layout/Footer/Footer";
 import { NavBar } from "./Components/Layout/Navbar/NavBar";
 import { Container } from "./Components/Layout/Container/Container";
 import { ProjectEdit } from "./Components/Pages/ProjectEdit/ProjectEdit";
+import { ProjectTestes } from "./requisições/get";
 
 
 
@@ -35,7 +36,7 @@ function App(){
                         <Route path="/newproject" element={<NewProject/>} />
                         <Route path="/projects" element={<Projects/>} />
                         <Route path="/project/:id" element={<ProjectEdit/>}/>
-
+                        <Route path="/testes" element={<ProjectTestes/>}/>
                     </Routes>
 
                 </Container>

@@ -33,8 +33,8 @@ export const Projects = () => {
     }, [])
 
 
-    const { state } = useLocation()
-    const message = state ? state.message : "";
+    const { state: mudarRota } = useLocation()
+    const message = mudarRota ? mudarRota.message : "";
 
     function removeProject(id) {
 
@@ -54,7 +54,7 @@ export const Projects = () => {
             .catch(err => console.log(err))
 
     }
-    console.log(project)
+    
     return (
 
 
