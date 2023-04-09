@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 
-export const Login = styled.form`
+export const Cadastro = styled.form`
+    
     
 `
-    

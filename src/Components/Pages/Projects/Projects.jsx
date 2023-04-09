@@ -33,8 +33,8 @@ export const Projects = () => {
     }, [])
 
 
-    const { state: mudarRota } = useLocation()
-    const message = mudarRota ? mudarRota.message : "";
+    const { state } = useLocation()
+    const message = state ? state.message : "";
 
     function removeProject(id) {
 

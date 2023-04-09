@@ -7,8 +7,8 @@ import { Contact } from './Components/Pages/Contact/Contact'
 import { Company } from './Components/Pages/Company/Company'
 import { NewProject } from './Components/Pages/NewProject/NewProject'
 import { Projects } from './Components/Pages/Projects/Projects'
-
-
+import { LoginPage } from "./Components/Pages/Login/login";
+import { CadastroPage } from "./Components/Pages/Cadastro/Cadastro";
 
 import { Footer } from "./Components/Layout/Footer/Footer";
 import { NavBar } from "./Components/Layout/Navbar/NavBar";
@@ -37,6 +37,8 @@ function App(){
                         <Route path="/projects" element={<Projects/>} />
                         <Route path="/project/:id" element={<ProjectEdit/>}/>
                         <Route path="/testes" element={<ProjectTestes/>}/>
+                        <Route path="/login" element={<LoginPage/>}/>
+                        <Route path="/cadastro" element={<CadastroPage/>}/>
                     </Routes>
 
                 </Container>
