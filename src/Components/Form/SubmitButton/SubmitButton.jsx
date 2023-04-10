@@ -1,10 +1,9 @@
-import { SubmitButton } from "./styles"
+import { SubmitButton } from "./styles";
 
-
-export const Submit= ({ text })=>{
-    return(
-        <SubmitButton>
-            <button>{text}</button>
-        </SubmitButton>
-    )
-}
+export const Submit = ({ text }) => {
+  return (
+    <SubmitButton>
+      <button>{text}</button>
+    </SubmitButton>
+  );
+};

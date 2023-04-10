@@ -39,6 +39,7 @@ function App(){
                         <Route path="/testes" element={<ProjectTestes/>}/>
                         <Route path="/login" element={<LoginPage/>}/>
                         <Route path="/cadastro" element={<CadastroPage/>}/>
+                        
                     </Routes>
 
                 </Container>
