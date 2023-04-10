@@ -44,5 +44,36 @@ export const Login = styled.div`
   a {
     text-decoration: none;
     color: #ffbb33;
+    padding: 5px;
+    
   }
+  a:hover{
+    color: #fff;
+    border-radius: 10px;
+    border: 2px solid #ffbb33;
+  }
+
 `;
+
+
+
+export const ButtonCustomized = styled.button`
+
+  ${props => props.disabled === true &&`
+     &:hover{
+      background-color:#222;
+      color:#ffff;
+      border:2px solid #ffbb33;
+     }
+    `
+  }
+  ${props => props.disabled === true &&`
+     &:hover{
+      background-color:#222;
+      color:#ffff;
+      border:2px solid #ffbb33;
+     }
+    `
+  }
+
+`
