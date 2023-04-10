@@ -10,4 +10,5 @@ const validarSenha = (senha) => {
 export {
     validarEmail,
     validarSenha
+    
 }
