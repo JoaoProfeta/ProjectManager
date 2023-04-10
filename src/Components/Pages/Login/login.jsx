@@ -3,57 +3,15 @@ import { Login } from "./styles";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import { validarEmail, validarSenha } from "../../Form/validadores/validadores";
-import { useCallback } from "react";
+
 export const LoginPage = () => {
 
-  const [loading, setLoading] = useState()
-  const [form, setForm] = useState([])
-
-  function handleOnChange(e) {
-
-    setForm({ ...form, [e.target.name]: e.target.value })
-
-    console.log(form)
+  const handleOnChange = ()=>{
 
   }
-
-
-
-
-
-  // const handleValidatorInput = useCallback(() => {
-  //
-  //   if (validarEmail(form.email) && validarSenha(form.senha) === //true) {
-  //     return "form está Válido"
-  //   } else {
-  //     return "form está inválido"
-  //   }
-  // }, [])
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    //console.log(handleValidatorInput())
-    try {
-      setLoading(true)
-      alert("login feito com sucesso")
-     
-    }
-    catch {
-      alert("login dedu erro")
-    }
+  const handleSubmit = ()=>{
+    
   }
-  const validadorInput = () => {
-    return validarEmail(form.email) && validarSenha(form.senha)
-  }
-
-
-
-
-
-
-
-
   return (
     <Login>
       <form action="">
@@ -78,7 +36,7 @@ export const LoginPage = () => {
         <Button
           onClick={handleSubmit}
           type="submit"
-          disabled={loading === true || !validadorInput()}
+          
           text={"Login"}
         />
 
