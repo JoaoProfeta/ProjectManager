@@ -7,11 +7,6 @@ import { useState } from "react";
 
 
 
-
-
-
-
-
 export const ProjectTestes = ()=>{
 
     const [projects,setProjects] = useState([])

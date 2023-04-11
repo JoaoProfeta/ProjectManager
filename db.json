@@ -58,5 +58,41 @@
       "id": 4,
       "name": "Planejamento"
     }
+  ],
+
+  "users": [
+    {
+      "email": "amvjoao@hotmailcom",
+      "senha": "1234566784",
+      "userNamme": "FRANTCHESCO",
+      "projects": [
+        {
+          "name": "Desenvolvendo app",
+          "budget": "5444",
+          "category": {
+            "id": "2",
+            "name": "Desenvolvimento"
+          },
+          "cost": 677,
+          "services": [
+            {
+              "name": "THE FATHER????",
+              "cost": "677",
+              "description": "retirar mundo",
+              "id": "a87d7d73-0364-4270-9f95-c85f3d0ddbdc"
+            }
+          ],
+          "id": 1
+        }
+      ]
+    },
+    {
+      "email": "SOOOY@hotmail.com",
+      "senha": "44556677",
+      "userNamme": "VIRGOLINIII",
+      "projects":[
+
+      ]
+    }
   ]
 }
