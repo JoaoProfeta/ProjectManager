@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 
-export const Cadastro = styled.form`
+export const Cadastro = styled.div`
     
   height: 75vh;
   width: 100%;
@@ -48,6 +48,7 @@ export const Cadastro = styled.form`
     text-decoration: none;
     color: #ffbb33;
   }
+  
 
 
 `

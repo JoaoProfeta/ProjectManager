@@ -6,76 +6,70 @@ import { Input } from "../Form/Input/input"
 import { Select } from "../Form/Select/Select"
 
 import { Submit } from "../Form/SubmitButton/SubmitButton"
+
+
 export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
-
-    const [categories, setCategories] = useState([])//para setar os dados na variavel
-
-
-    const [project, setProject] = useState(projectData || {})
-
-    // para evitar o bug de loop
+    const [categories, setCategories] = useState([]);
+    const [projects, setProjects] = useState({});
+    const [userProjects, setUserProjects] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(0)
     useEffect(() => {
-        fetch("http://localhost:5000/categories", {
-            method: "GET",
-            headers: {
-                "content-type": "application/json",
-            },
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
+        const getCategories = JSON.parse(localStorage.getItem("categories"));
+        setCategories(getCategories);
 
-                setCategories(data);
-            })
-            .catch((err) => console.log(err))
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+        const projects = loggedInUser.projects || [];
+        setUserProjects(projects);
     }, [])
 
-
-
-    const submit = (e) => {
-
-        e.preventDefault();
-
-        handleSubmit(project);
-
-
-    }
-
-
     function handleChange(e) {
-        setProject({ ...project, [e.target.name]: e.target.value })
-
+        setProjects({ ...projects, [e.target.name]: e.target.value });
     }
 
     function handleCategory(e) {
-        setProject({
-            ...project, category:
-            {
-                id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text,
 
-            }
-        })
+        setSelectedCategory(e.target.value)
+        
+    }
+
+    function handleSubmitForm(e) {
+        e.preventDefault();
+        const categoryFind = categories.find(c => c.id == selectedCategory);
+        
+        const newProject = { name: projects.name, budget: projects.budget, id: projects.id, category:categoryFind.name };
+        setUserProjects([...userProjects, newProject]);
+
 
     }
 
+    useEffect(() => {
+
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        const updatedUser = { ...loggedInUser, projects: userProjects };
+
+        localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+        
+    }, [userProjects]);
+   
     return (
-        <FormForProjects onSubmit={submit}>
+        <FormForProjects onSubmit={handleSubmitForm}>
             <Input
                 type="text"
                 text="Nome do Projeto"
-                name="name" // é o name do project.name >>> após o name="project.name"
+                name="name"
                 placeholder="Insira o nome do projeto"
                 handleOnChange={handleChange}
-                value={project.name ? project.name : ""}
+                value={projects.name || ""}
             />
 
             <Input
                 type="number"
                 text="Orçamento do projeto"
-                name="budget" //é o budget do project.budget >>> após o name="project.budget"
+                name="budget"
                 placeholder="Insira o orçamento total"
                 handleOnChange={handleChange}
-                value={project.budget ? project.budget : ""}
+                value={projects.budget || ""}
             />
 
             <Select
@@ -83,11 +77,10 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                 text="Selecione a categoria"
                 options={categories}
                 handleOnChange={handleCategory}
-                value={project.category ? project.category.id : ''}
+                value={selectedCategory}
             />
-
 
             <Submit text={btnText} />
         </FormForProjects>
-    )
+    );
 }

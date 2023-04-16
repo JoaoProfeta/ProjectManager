@@ -6,45 +6,62 @@ import { LinkButton } from "../../Layout/linkButtom/LinkButtom";
 import { ProjectCard } from "../../ProjectCard/ProjectCard";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { BtnSair } from "./btnSair";
+import { CardTeste } from "./cardTest";
 export const Projects = () => {
+  
   const [project, setProject] = useState([]);
-  const [removeLoading, setRemoveLoading] = useState(false);
-  const [projectMessage, setProjectMessage] = useState("");
+  //const [removeLoading, setRemoveLoading] = useState(false);
+  //const [projectMessage, setProjectMessage] = useState("");
+  //const location = useLocation();
+  const { state } = useLocation()
 
   useEffect(() => {
-    setTimeout(() => {
-      fetch("http://localhost:5000/projects/", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((resp) => resp.json())
-        .then((date) => {
-          setProject(date);
-          setRemoveLoading(true);
-        })
-        .catch((err) => console.log(err));
-    }, 300);
-  }, []);
+    if(state === null){
+      return console.log("não tem nada aqui")
+    }else{
+      setProject(state.projects)
+    }
+    //outra forma: !!state && setProjects(state.projects)
+  }, [])
 
-  const { state } = useLocation();
-  const message = state ? state.message : "";
-
-  function removeProject(id) {
-    fetch(`http://localhost:5000/projects/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setProject(project.filter((project) => project.id !== id));
-        setProjectMessage("Projeto removido com Sucesso");
-      })
-      .catch((err) => console.log(err));
+  const handleRemove = ()=>{
+    setProject(state)
   }
+  /* useEffect(() => {
+     setTimeout(() => {
+       fetch("http://localhost:5000/projects/", {
+         method: "GET",
+         headers: {
+           "Content-Type": "application/json",
+         },
+       })
+         .then((resp) => resp.json())
+         .then((date) => {
+           //setProject(date);
+           //setRemoveLoading(true);
+         })
+         .catch((err) => console.log(err));
+     }, 300);
+   }, []);
+ 
+   //const { state } = useLocation();
+   //const message = state ? state.message : "";
+ 
+   function removeProject(id) {
+     fetch(`http://localhost:5000/projects/${id}`, {
+       method: "DELETE",
+       headers: {
+         "Content-Type": "application/json",
+       },
+     })
+       .then((resp) => resp.json())
+       .then((data) => {
+         //setProject(project.filter((project) => project.id !== id));
+         //setProjectMessage("Projeto removido com Sucesso");
+       })
+       .catch((err) => console.log(err));
+   }*/
 
   return (
     <ProjectPage>
@@ -53,25 +70,27 @@ export const Projects = () => {
 
         <LinkButton to="/newproject" text="Criar Projeto" />
       </div>
-      {message && <Message msg={message} type="success" />}
-      {projectMessage && <Message msg={projectMessage} type="success" />}
+      {/*message && <Message msg={message} type="success" />*/}
+      {/*projectMessage && <Message msg={projectMessage} type="success" />*/}
       <Container startStyle={true}>
+
         {project.length > 0 &&
-          project.map((projects) => (
-            <ProjectCard
-              name={projects.name}
-              id={projects.id}
-              budget={projects.budget}
-              category={projects.category.name}
-              key={projects.id}
-              handleRemove={removeProject}
-            />
-          ))}
-        {!removeLoading && <Loading />}
-        {removeLoading && project.length === 0 && (
-          <p>Não há projetos cadastrados</p>
-        )}
+          project.map((projects) => {
+            return (
+              <CardTeste
+                name={projects.name}
+                id={projects.id}
+                budget={projects.budget}
+                key={projects.id}
+                
+              />
+            )
+          }
+          )}
+
+
       </Container>
+      <BtnSair onclick={handleRemove}/>
     </ProjectPage>
   );
 };
