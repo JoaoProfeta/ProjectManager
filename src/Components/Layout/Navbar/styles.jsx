@@ -35,7 +35,14 @@ export const Nav = styled.div`
             color: #ffbb33;
             border-radius: 0 0 4px 4px;
         }
-        
+        .icon_exit{
+            color: #fff;
+            align-items: center;
+            
+        }
+        .icon_exit:hover{
+            color: #ffbb33;
+        }
 
 
 
