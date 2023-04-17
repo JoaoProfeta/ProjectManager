@@ -28,40 +28,7 @@ export const Projects = () => {
   const handleRemove = ()=>{
     setProject(state)
   }
-  /* useEffect(() => {
-     setTimeout(() => {
-       fetch("http://localhost:5000/projects/", {
-         method: "GET",
-         headers: {
-           "Content-Type": "application/json",
-         },
-       })
-         .then((resp) => resp.json())
-         .then((date) => {
-           //setProject(date);
-           //setRemoveLoading(true);
-         })
-         .catch((err) => console.log(err));
-     }, 300);
-   }, []);
- 
-   //const { state } = useLocation();
-   //const message = state ? state.message : "";
- 
-   function removeProject(id) {
-     fetch(`http://localhost:5000/projects/${id}`, {
-       method: "DELETE",
-       headers: {
-         "Content-Type": "application/json",
-       },
-     })
-       .then((resp) => resp.json())
-       .then((data) => {
-         //setProject(project.filter((project) => project.id !== id));
-         //setProjectMessage("Projeto removido com Sucesso");
-       })
-       .catch((err) => console.log(err));
-   }*/
+  
 
   return (
     <ProjectPage>

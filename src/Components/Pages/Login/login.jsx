@@ -44,11 +44,7 @@ export const LoginPage = () => {
     console.log(user)
   
   }
-  const exitUser = () => {
-    localStorage.removeItem('loggedInUser');
-    location.reload()
-    navigate("/")
-  }
+  
 
 
 
@@ -79,7 +75,7 @@ export const LoginPage = () => {
 
           text={"Login"}
         />
-        <Button type="submit" onClick={exitUser}>sair</Button>
+        
 
         <div>
           Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
