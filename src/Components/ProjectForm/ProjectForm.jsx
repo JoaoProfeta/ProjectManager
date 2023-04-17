@@ -14,16 +14,11 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
     const [userProjects, setUserProjects] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(0)
 
-
-
     const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"))
-
+    
     const logged = !!userLoggedIn
 
-
-
     useEffect(() => {
-
 
         if (logged) {
             const getCategories = JSON.parse(localStorage.getItem("categories"));
@@ -34,16 +29,13 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
             setUserProjects(projects);
         }
 
-
     }, [])
 
-
-
     function handleChange(e) {
+
         setProjects({ ...projects, [e.target.name]: e.target.value });
+
     }
-
-
 
     function handleCategory(e) {
 
@@ -51,17 +43,15 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
 
     }
 
-
-
     function handleSubmitForm(e) {
-        e.preventDefault();
+
         const categoryFind = categories.find(c => c.id == selectedCategory);
 
         const newProject = { name: projects.name, budget: projects.budget, id: projects.id, category: categoryFind.name };
+
         setUserProjects([...userProjects, newProject]);
+
     }
-
-
 
     useEffect(() => {
 
@@ -72,12 +62,16 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
             const updatedUser = { ...loggedInUser, projects: userProjects };
 
             localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
+
+            const usersCopied = JSON.parse(localStorage.getItem('users') || []);
+            
+            const userFiltrado = usersCopied.find(user => user.email != userLoggedIn.email)
+            
+            localStorage.setItem('users', JSON.stringify([userFiltrado,updatedUser]))
+            
         }
 
     }, [userProjects]);
-
-
-
 
     return (
         <FormForProjects onSubmit={handleSubmitForm}>

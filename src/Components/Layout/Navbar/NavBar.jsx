@@ -6,11 +6,21 @@ import logo from "../../../assets/costs_logo.png";
 import { Container } from "../Container/Container";
 import { useNavigate } from "react-router-dom";
 import { RxExit } from "react-icons/rx"
+import { useState } from "react";
 export const NavBar = () => {
   const navigate = useNavigate()
-  const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"))
 
+  const [usersATT, setUsersATT] = useState([])
+
+  const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"))
+  console.log(userLoggedIn)
   const logged = !!userLoggedIn
+  
+
+  
+
+
+
 
   const navLinkNew = [
     { to: "/", name: "Home", id: 1, key: "home", loggedIn: true },
@@ -26,12 +36,15 @@ export const NavBar = () => {
 
 
   const exitUser = () => {
-
     
+    
+
     localStorage.removeItem('loggedInUser');
-    location.reload()
+
     navigate("/")
-  }
+  
+  };
+  
   return (
     <Nav>
       <Container>
@@ -60,4 +73,4 @@ export const NavBar = () => {
       </Container>
     </Nav>
   );
-};
+}
