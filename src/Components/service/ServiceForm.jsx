@@ -1,23 +1,23 @@
 import { FormForService } from "./styles"
 import { useState } from "react"
-import { Input } from "../Form/Input/input"
-import { Submit } from "../Form/SubmitButton/SubmitButton"
+import { Input } from "../Input/input"
+import { Submit } from "../SubmitButton/SubmitButton"
 
-export const ServiceForm = ({ handleSubmit, textBtn, projectData})=>{
+export const ServiceForm = ({ handleSubmit, textBtn, projectData }) => {
 
     const [service, setService] = useState({})
 
-    function submit(e){
+    function submit(e) {
         e.preventDefault()
         projectData.services.push(service)
         handleSubmit(projectData)
     }
-    function handleChange(e){
-        setService({...service, [e.target.name]:e.target.value})
+    function handleChange(e) {
+        setService({ ...service, [e.target.name]: e.target.value })
     }
-    return(
+    return (
         <FormForService onSubmit={submit}>
-            
+
             <Input
                 type="text"
                 text="Nome do Serviço"
@@ -40,9 +40,9 @@ export const ServiceForm = ({ handleSubmit, textBtn, projectData})=>{
                 handleOnChange={handleChange}
             />
             <Submit
-            className="btn"
-            text={textBtn}
-            onClick={submit}/>
+                className="btn"
+                text={textBtn}
+                onClick={submit} />
         </FormForService>
     )
 }
