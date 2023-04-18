@@ -10,9 +10,7 @@ export const StyledSignup = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
-
-  form {
+  form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -25,7 +23,7 @@ export const StyledSignup = styled.div`
     box-shadow: 1px 1px 20px 5px #ffbb33;
 
   }
-  input {
+  input{
     padding: 5px;
     border-radius: 10px;
     outline: 0;
@@ -51,4 +49,8 @@ export const StyledSignup = styled.div`
   
 
 
+`
+
+export const Text = styled.div`
+  text-align: center;
 `

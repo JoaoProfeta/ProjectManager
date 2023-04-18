@@ -4,8 +4,9 @@ import { StyledSignup } from "./styles";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuid } from "uuid"
-
-
+import { Input } from "../../Components/Input/input";
+import { Button } from "../../Components/SubmitButton/SubmitButton";
+import { Text } from "./styles"
 
 export const SignUp = () => {
 
@@ -38,50 +39,44 @@ export const SignUp = () => {
   return (
     <StyledSignup>
       <form action="">
-        <label htmlFor="email">
-          E-mail
-          <input
-            type="text"
-            name="email"
-            id="email"
-            onChange={handleOnChange}
-          />
-        </label>
-        <label htmlFor="nome">
-          Nome
-          <input
-            type="text"
-            name="nome"
-            id="nome"
-            onChange={handleOnChange}
-          />
-        </label>
-        <label htmlFor="senha">
-          Senha
-          <input
-            type="password"
-            name="senha"
-            id="senha"
-            onChange={handleOnChange}
-          />
-        </label>
-        <label htmlFor="repetir-senha">
-          Repita a senha
-          <input
-            type="password"
-            name="repetir-senha"
-            id="repetir-senha"
-          />
-        </label>
-        <button
+        <Input
+          type="text"
+          name="email"
+          id="email"
+          onChange={handleOnChange}
+          text="E-Mail"
+        />
+        <Input
+          type="text"
+          name="username"
+          id="username"
+          onChange={handleOnChange}
+          text="Nome"
+        />
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          onChange={handleOnChange}
+          text="Senha"
+        />
+
+        <Input
+          type="password"
+          name="repeat-password"
+          id="repeat-password"
+          onChange={handleOnChange}
+          text="Repetir Senha"
+        />
+        <Button
           onClick={handleOnSubmit}
           type="submit"
-        >
-          Cadastre-se
-        </button>
-        <div>
+          text="Cadastre-se"
+        />
+
+        <Text>
           já tem conta?<Link to="/login">Login</Link>
-        </div>
+        </Text>
       </form>
     </StyledSignup>
   );

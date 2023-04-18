@@ -5,7 +5,7 @@ import { StyledProjectForm } from "./styles"
 import { Input } from "../Input/input"
 import { Select } from "../Select/Select"
 
-import { Submit } from "../SubmitButton/SubmitButton"
+import { Button } from "../SubmitButton/SubmitButton"
 
 
 export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
@@ -101,7 +101,7 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                 value={selectedCategory}
             />
 
-            <Submit text={btnText} />
+            <Button text={btnText} />
         </StyledProjectForm>
     );
 }

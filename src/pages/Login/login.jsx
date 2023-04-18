@@ -1,10 +1,11 @@
 
 import { StyledSign } from "./styles";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import { Input } from "../../Components/Input/input";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from 'react-router-dom';
+import { Button } from "../../Components/SubmitButton/SubmitButton";
 
 
 export const Sign = () => {
@@ -23,7 +24,7 @@ export const Sign = () => {
 
 
   const handleSubmit = (e) => {
-    
+
     //validador de email e senha|| 
     const getUsers = JSON.parse(localStorage.getItem('users')) || [];
     const userFind = getUsers.find(user => user.email === loggedUser.email && user.password === loggedUser.password);
@@ -37,41 +38,35 @@ export const Sign = () => {
       alert('Email ou senha incorretos');
 
     }
-  
+
   }
-  
+
 
 
 
   return (
     <StyledSign>
       <form action="">
-        <label htmlFor="email">
-          E-mail
-          <input
-            type="text"
-            name="email"
-            id="email"
-            onChange={handleOnChange}
-          />
-        </label>
-        <label htmlFor="senha">
-          Senha
-          <input
-            type="password"
-            name="senha"
-            id="senha"
-            onChange={handleOnChange}
-          />
-        </label>
+
+      <Input
+          type="text"
+          name="email"
+          id="email"
+          onChange={handleOnChange}
+          text="E-Mail"
+        />
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          onChange={handleOnChange}
+          text="Senha"
+        />   
         <Button
           onClick={handleSubmit}
           type="submit"
-
           text={"Login"}
         />
-        
-
         <div>
           Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
         </div>
