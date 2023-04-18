@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 export const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
 
-    function remove(e){
+    function handleRemoveProjectsCard(e){
        
         e.preventDefault()
         handleRemove(id)
@@ -22,7 +22,7 @@ export const ProjectCard = ({ id, name, budget, category, handleRemove}) => {
             <div className="project_card_actions">
                 <Link to={`/project/${id}`}> <BsPencil /> Editar</Link>
 
-                <button onClick={remove}>
+                <button onClick={handleRemoveProjectsCard}>
                     <BsFillTrashFill /> Excluir
                 </button>
             </div>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
 
-import { FormForProjects } from "./styles"
-import { Input } from "../Form/Input/input"
-import { Select } from "../Form/Select/Select"
+import { StyledProjectForm } from "./styles"
+import { Input } from "../Input/input"
+import { Select } from "../Select/Select"
 
-import { Submit } from "../Form/SubmitButton/SubmitButton"
+import { Submit } from "../SubmitButton/SubmitButton"
 
 
 export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
@@ -15,7 +15,7 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
     const [selectedCategory, setSelectedCategory] = useState(0)
 
     const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"))
-    
+
     const logged = !!userLoggedIn
 
     useEffect(() => {
@@ -37,7 +37,7 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
 
     }
 
-    function handleCategory(e) {
+    function handleCategoryProjects(e) {
 
         setSelectedCategory(e.target.value)
 
@@ -64,17 +64,17 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
             localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
 
             const usersCopied = JSON.parse(localStorage.getItem('users') || []);
-            
+
             const userFiltrado = usersCopied.find(user => user.email != userLoggedIn.email)
-            
-            localStorage.setItem('users', JSON.stringify([userFiltrado,updatedUser]))
-            
+
+            localStorage.setItem('users', JSON.stringify([userFiltrado, updatedUser]))
+
         }
 
     }, [userProjects]);
 
     return (
-        <FormForProjects onSubmit={handleSubmitForm}>
+        <StyledProjectForm onSubmit={handleSubmitForm}>
             <Input
                 type="text"
                 text="Nome do Projeto"
@@ -97,11 +97,11 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                 name="category_id"
                 text="Selecione a categoria"
                 options={categories}
-                handleOnChange={handleCategory}
+                handleOnChange={handleCStyledProjectForm}
                 value={selectedCategory}
             />
 
             <Submit text={btnText} />
-        </FormForProjects>
+        </StyledProjectForm>
     );
 }
