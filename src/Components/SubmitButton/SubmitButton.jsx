@@ -1,9 +1,9 @@
 import { SubmitButton } from "./styles";
 
-export const Submit = ({ text }) => {
+export const Button = ({ text,...rest }) => {
   return (
     <SubmitButton>
-      <button>{text}</button>
+        {text}
     </SubmitButton>
   );
 };

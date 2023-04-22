@@ -1,12 +1,13 @@
-import { StyledProject } from "./styles";
+import { StyledProjects } from "./styles";
 import { Message } from "../../Components/Message/Message"
 import { Container } from "../../Components/Container/Container";
 import { Loading } from "../../Components/Loading/Loading"
 import { ProjectCard } from "../../Components/ProjectCard/ProjectCard";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { BtnSair } from "./btnSair";
-import { CardTeste } from "./cardTest";
+
+
+
 export const Projects = () => {
   
   const [project, setProject] = useState([]);
@@ -28,7 +29,7 @@ export const Projects = () => {
   
 
   return (
-    <StyledProject>
+    <StyledProjects>
       <div className="title_container">
         <h1>Meus projetos</h1>
 
@@ -54,7 +55,7 @@ export const Projects = () => {
 
 
       </Container>
-      <BtnSair onclick={handleRemove}/>
-    </StyledProject>
+      
+    </StyledProjects>
   );
 };

@@ -6,6 +6,7 @@ import { Container } from "../Container/Container";
 import { useNavigate } from "react-router-dom";
 import { RxExit } from "react-icons/rx"
 import { useState } from "react";
+import { Button } from "../SubmitButton/SubmitButton";
 
 export const NavBar = () => {
 
@@ -56,7 +57,7 @@ export const NavBar = () => {
             })
           }
 
-          {logged && <li className="icon_exit" ><RxExit onClick={exitUser} /></li>}
+          {logged && <Button className="icon_exit" ><RxExit onClick={exitUser} /></Button>}
         </ul>
 
       </Container>

@@ -1,7 +1,7 @@
 import { FormForService } from "./styles"
 import { useState } from "react"
 import { Input } from "../Input/input"
-import { Submit } from "../SubmitButton/SubmitButton"
+import { Button } from "../SubmitButton/SubmitButton"
 
 export const ServiceForm = ({ handleSubmit, textBtn, projectData }) => {
 
@@ -39,7 +39,7 @@ export const ServiceForm = ({ handleSubmit, textBtn, projectData }) => {
                 placeholder="escreva o serviço"
                 handleOnChange={handleChange}
             />
-            <Submit
+            <Button
                 className="btn"
                 text={textBtn}
                 onClick={submit} />
