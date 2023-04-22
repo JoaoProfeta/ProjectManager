@@ -2,50 +2,49 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import './index.css';
 
-import { Home } from './Components/Pages/Home/Home'
-import { Contact } from './Components/Pages/Contact/Contact'
-import { Company } from './Components/Pages/Company/Company'
-import { NewProject } from './Components/Pages/NewProject/NewProject'
-import { Projects } from './Components/Pages/Projects/Projects'
-import { LoginPage } from "./Components/Pages/Login/login";
-import { CadastroPage } from "./Components/Pages/Cadastro/Cadastro";
+import { Home } from './Pages/Home'
+import { Contact } from './Pages/Contact'
+import { Company } from './Pages/Company'
+import { NewProject } from './Pages/NewProject'
+import { Projects } from './Pages/Projects'
+import { LoginPage } from "./Pages/Login";
+import { CadastroPage } from "./Pages/Cadastro";
 
-import { Footer } from "./Components/Layout/Footer/Footer";
-import { NavBar } from "./Components/Layout/Navbar/NavBar";
-import { Container } from "./Components/Layout/Container/Container";
-import { ProjectEdit } from "./Components/Pages/ProjectEdit/ProjectEdit";
-import { ProjectTestes } from "./requisições/get";
+import { Footer } from "./Components/Footer";
+import { NavBar } from "./Components/Navbar";
 
-
+import { Container } from "./Components/Container";
+import { ProjectEdit } from "./Pages/ProjectEdit";
 
 
-function App(){
-    return(
-        
+
+
+function App() {
+    return (
+
         <Router>
 
-            <NavBar/>
+            <NavBar />
 
-                <Container styleHeight = {true}>
+            <Container styleHeight={true}>
 
-                    <Routes>
+                <Routes>
 
-                        <Route path="/" element={<Home/>} />
-                        <Route path="/contact" element={<Contact/>} />
-                        <Route path="/company" element={<Company/>} />
-                        <Route path="/newproject" element={<NewProject/>} />
-                        <Route path="/projects" element={<Projects/>} />
-                        <Route path="/project/:id" element={<ProjectEdit/>}/>
-                        <Route path="/testes" element={<ProjectTestes/>}/>
-                        <Route path="/login" element={<LoginPage/>}/>
-                        <Route path="/cadastro" element={<CadastroPage/>}/>
-                        
-                    </Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/company" element={<Company />} />
+                    <Route path="/newproject" element={<NewProject />} />
+                    <Route path="/projects" element={<Projects />} />
+                    <Route path="/project/:id" element={<ProjectEdit />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/cadastro" element={<CadastroPage />} />
 
-                </Container>
+                </Routes>
 
-            <Footer/>
-            
+            </Container>
+
+            <Footer />
+
         </Router>
     )
 }
