@@ -31,14 +31,14 @@ export const Nav = styled.div`
             color: #fff;
         }
         .link_style:hover{
-            color: #ffbb33;
+            color: #778da9;
             
         }
 
         .active{
             text-decoration: none;
-            border-bottom: solid 2px #ffbb33;
-            color: #ffbb33;
+            border-bottom: solid 2px #415a77;
+            color: #778da9;
             border-radius: 0 0 4px 4px;
         }
         

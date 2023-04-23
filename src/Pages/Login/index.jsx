@@ -5,6 +5,7 @@ import { Button } from "./Button";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from 'react-router-dom';
+import { Submit } from "../../Components/SubmitButton";
 
 
 export const LoginPage = () => {
@@ -71,14 +72,12 @@ export const LoginPage = () => {
             onChange={handleOnChange}
           />
         </label>
-        <Button
+        <Submit
           onClick={handleSubmit}
           type="submit"
-
+          disabled
           text={"Login"}
         />
-        <Button type="submit" onClick={exitUser}>sair</Button>
-
         <div>
           Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
         </div>
