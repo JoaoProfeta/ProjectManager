@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react"
+<<<<<<< HEAD:src/Components/ProjectForm/index.jsx
+import { FormForProjects } from "./styles"
+import { Input } from "../Input"
+import { Select } from "../Select"
+import { Submit } from "../SubmitButton"
+=======
 
 
 import { StyledProjectForm } from "./styles"
@@ -6,6 +12,7 @@ import { Input } from "../Input/input"
 import { Select } from "../Select/Select"
 
 import { Button } from "../SubmitButton/SubmitButton"
+>>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectForm/ProjectForm.jsx
 
 
 export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
@@ -101,7 +108,12 @@ export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
                 value={selectedCategory}
             />
 
+<<<<<<< HEAD:src/Components/ProjectForm/index.jsx
+            <Submit text="Criar Projeto" />
+        </FormForProjects>
+=======
             <Button text={btnText} />
         </StyledProjectForm>
+>>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectForm/ProjectForm.jsx
     );
 }
