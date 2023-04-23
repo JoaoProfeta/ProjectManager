@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Cadastro } from "./styles";
+import { StyledSignUp } from "./styles";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid"
 
@@ -38,7 +38,7 @@ export const CadastroPage = () => {
 
 
   return (
-    <Cadastro>
+    <StyledSignUp>
       <form action="">
         <label htmlFor="email">
           E-mail
@@ -85,7 +85,7 @@ export const CadastroPage = () => {
           já tem conta?<Link to="/login">Login</Link>
         </div>
       </form>
-    </Cadastro>
+    </StyledSignUp>
   );
 };
 

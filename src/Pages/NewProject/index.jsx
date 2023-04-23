@@ -1,4 +1,4 @@
-import { NewPJ } from "./styles";
+import { StyledNewProject } from "./styles";
 import { ProjectForm } from "../../Components/ProjectForm";
 
 

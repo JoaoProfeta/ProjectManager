@@ -1,5 +1,5 @@
 
-import { Login } from "./styles";
+import { StyledSign } from "./styles";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import { useEffect, useState } from "react";
@@ -52,7 +52,7 @@ export const LoginPage = () => {
 
 
   return (
-    <Login>
+    <StyledSign>
       <form action="">
         <label htmlFor="email">
           E-mail
@@ -82,7 +82,7 @@ export const LoginPage = () => {
           Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
         </div>
       </form>
-    </Login>
+    </StyledSign>
   );
 };
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 
-export const StyledSignup = styled.div`
+export const StyledSignUp = styled.div`
     
   height: 75vh;
   width: 100%;

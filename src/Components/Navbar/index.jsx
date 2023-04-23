@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { Nav } from "./styles";
+import { StyledNav } from "./styles";
 import logo from "../../assets/costs_logo.png";
 import { Container } from "../Container";
 

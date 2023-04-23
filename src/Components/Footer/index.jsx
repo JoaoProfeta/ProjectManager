@@ -1,8 +1,8 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { FooterArea } from "./styles";
+import { StyledFooter } from "./styles";
 export const Footer = () => {
   return (
-    <FooterArea>
+    <StyledFooter>
       <div>
           <p>Contact</p>
         <ul className="contact">
@@ -29,6 +29,6 @@ export const Footer = () => {
         </ul>
       </div>
       
-    </FooterArea>
+    </StyledFooter>
   );
 };

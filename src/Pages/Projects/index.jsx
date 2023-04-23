@@ -1,4 +1,4 @@
-import { ProjectPage } from "./styles";
+import { StyledProjects } from "./styles";
 import { Message } from "../../Components/Message";
 import { Container } from "../../Components/Container";
 import { LinkButton } from "../../Components/linkButtom";
@@ -23,7 +23,7 @@ export const Projects = () => {
  
 
   return (
-    <ProjectPage>
+    <StyledProjects>
       <div className="title_container">
         <h1>Meus projetos</h1>
 
@@ -51,6 +51,6 @@ export const Projects = () => {
 
       </Container>
       <Submit text="apagar"/>
-    </ProjectPage>
+    </StyledProjects>
   );
 };
