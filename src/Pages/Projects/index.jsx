@@ -4,27 +4,22 @@ import { Container } from "../../Components/Container";
 import { LinkButton } from "../../Components/linkButtom";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { BtnSair } from "./btnSair";
+
 import { CardTeste } from "./cardTest";
+import { Submit } from "../../Components/SubmitButton";
 
 export const Projects = () => {
   
   const [project, setProject] = useState([]);
 
-  const { state } = useLocation()
+  
 
-  useEffect(() => {
-    if(state === null){
-      return console.log("não tem nada aqui")
-    }else{
-      setProject(state.projects)
-    }
-    //outra forma: !!state && setProjects(state.projects)
-  }, [])
+  useEffect(()=>{
+    const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
 
-  const handleRemove = ()=>{
-    setProject(state)
-  }
+  setProject(getUserLoggedIn.projects)
+  },[])
+  
  
 
   return (
@@ -46,6 +41,7 @@ export const Projects = () => {
                 id={projects.id}
                 budget={projects.budget}
                 key={projects.id}
+                category={projects.category}
                 
               />
             )
@@ -54,7 +50,7 @@ export const Projects = () => {
 
 
       </Container>
-      <BtnSair onclick={handleRemove}/>
+      <Submit text="apagar"/>
     </ProjectPage>
   );
 };

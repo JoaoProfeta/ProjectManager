@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './index.css';
 
 import { Home } from './Pages/Home'
-import { Contact } from './Pages/Contact'
-import { Company } from './Pages/Company'
+
 import { NewProject } from './Pages/NewProject'
 import { Projects } from './Pages/Projects'
 import { LoginPage } from "./Pages/Login";
@@ -31,8 +30,6 @@ function App() {
                 <Routes>
 
                     <Route path="/" element={<Home />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/company" element={<Company />} />
                     <Route path="/newproject" element={<NewProject />} />
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/project/:id" element={<ProjectEdit />} />

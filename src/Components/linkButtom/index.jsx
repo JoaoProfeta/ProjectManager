@@ -2,12 +2,12 @@
 import { Link } from "react-router-dom";
 import { LinkBtn } from "./styles";
 
-export const LinkButton = ({ to, text, txd }) => {
+export const LinkButton = ({ to, text }) => {
   return (
     <LinkBtn
-      to={to} //txd={txd}
+      to={to}
     >
-      <div>{text}</div>
+    {text}
     </LinkBtn>
   );
 };

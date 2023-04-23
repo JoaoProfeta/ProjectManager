@@ -1,10 +1,10 @@
 
 
 
-export const CardTeste = ({ id, name, budget }) => {
+export const CardTeste = ({ id, name, budget, category }) => {
     return (
         <div>
-            <p id={id}>{name} : {budget}</p>
+            <p id={id}>{name} : {budget} : {category}</p>
         </div>
     )
 }

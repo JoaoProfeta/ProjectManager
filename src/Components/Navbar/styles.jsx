@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Nav = styled.div`
     display: flex;
     justify-content: space-around;
-    background-color:#222;
+    background-color:#0d1b2a;
     padding: 1em;
 
         ul{
@@ -18,11 +18,17 @@ export const Nav = styled.div`
             margin-right: 1em;
             
         }
-        .link_style{
+        .logo{
             text-decoration: none;
             color: #fff;
             
+        }
+        .logo h1{
 
+        }
+        .link_style{
+            text-decoration: none;
+            color: #fff;
         }
         .link_style:hover{
             color: #ffbb33;

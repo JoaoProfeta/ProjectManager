@@ -8,16 +8,17 @@ export const HomePage = styled.section`
     align-items: center;
     justify-content: center;
     padding: 4em;
+    background-color: #1b263b;
 
         h1{
             font-size: 2.5em;
             margin-bottom: .5em;
-
+            color: #fff;
         }
         h1 span{
-            color: #ffbb33;
+            color: #778da9;
             padding:0.2em ;
-            background-color:#222;
+
         }
         p {
             margin-bottom: 1.5em;
@@ -27,4 +28,5 @@ export const HomePage = styled.section`
             width: 350px;
             margin:2em 0;
         }
+
 `
