@@ -50,4 +50,4 @@ export const EditCard = styled.div`
 
 
     
-`
+`;

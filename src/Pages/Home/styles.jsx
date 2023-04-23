@@ -29,4 +29,4 @@ export const StyledHome = styled.section`
             margin:2em 0;
         }
 
-`
+`;

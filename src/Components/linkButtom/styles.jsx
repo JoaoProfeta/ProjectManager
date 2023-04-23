@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const LinkBtn = styled(Link)`
   background: #222;
@@ -7,7 +7,7 @@ export const LinkBtn = styled(Link)`
   padding: 0.5em 1em;
   border-radius: 10px;
   /*usando com o props ( txd )  >> text-decoration: ${(props) =>
-    props.txd ? "none" : "outline"};*/
+		props.txd ? "none" : "outline"};*/
   text-decoration: none;
 
   div {

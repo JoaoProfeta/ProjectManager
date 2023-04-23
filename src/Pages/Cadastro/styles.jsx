@@ -49,8 +49,8 @@ export const StyledSignUp = styled.div`
   
 
 
-`
+`;
 
 export const Text = styled.div`
   text-align: center;
-`
+`;

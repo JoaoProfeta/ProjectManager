@@ -80,4 +80,4 @@ export const Card = styled.div`
             color: #ffbb33;
         }
 
-`
+`;

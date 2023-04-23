@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 
 export const StyledNewProject = styled.div`
@@ -12,7 +12,7 @@ export const StyledNewProject = styled.div`
         p{
             color:#7b7b7b;
         }
-`
+`;
 
 
 

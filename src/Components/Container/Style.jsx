@@ -8,16 +8,16 @@ export const StyledContainer = styled.div`
   flex-wrap: wrap;
 
   ${
-    ({ styleHeight }) =>
-      styleHeight &&
+	({ styleHeight }) =>
+		styleHeight &&
       `
         min-height: 75%;`
-    //destruction pt exposed 2 >>>>
-  };
-  ${({ start }) => start && `justify-content:flex-start;`};
+	//destruction pt exposed 2 >>>>
+};
+  ${({ start }) => start && "justify-content:flex-start;"};
 
   ${({ column }) =>
-    column &&
+		column &&
     `justify-content:flex-start;
         flex-direction:column;
         `};

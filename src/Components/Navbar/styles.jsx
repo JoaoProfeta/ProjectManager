@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledNav = styled.div`
     display: flex;
@@ -45,4 +45,4 @@ export const StyledNav = styled.div`
         .icon_exit:hover{
             color: #ffbb33;
         }
-`  
+`;  

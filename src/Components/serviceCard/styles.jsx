@@ -27,4 +27,4 @@ export const CardForServices = styled.div`
             display: flex;
             align-items: center;
         }
-`
+`;

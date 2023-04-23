@@ -59,21 +59,21 @@ export const StyledSign = styled.div`
 
 export const ButtonCustomized = styled.button`
 
-  ${props => props.disabled === true &&`
+  ${(props) => props.disabled === true &&`
      &:hover{
       background-color:#222;
       color:#ffff;
       border:2px solid #ffbb33;
      }
     `
-  }
-  ${props => props.disabled === true &&`
+}
+  ${(props) => props.disabled === true &&`
      &:hover{
       background-color:#222;
       color:#ffff;
       border:2px solid #ffbb33;
      }
     `
-  }
+}
 
-`
+`;

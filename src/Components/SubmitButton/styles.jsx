@@ -13,20 +13,20 @@ export const SubmitButton = styled.button`
   button:hover {
     color: #ffbb33;
   }
-  ${props => props.disabled === true &&`
+  ${(props) => props.disabled === true &&`
      &:hover{
       background-color:#222;
       color:#ffff;
       border:2px solid #ffbb33;
      }
     `
-  }
-  ${props => props.disabled === true &&`
+}
+  ${(props) => props.disabled === true &&`
      &:hover{
       background-color:#222;
       color:#ffff;
       border:2px solid #ffbb33;
      }
     `
-  }
+}
 `;

@@ -10,5 +10,5 @@ export const StyledProjects = styled.div`
         margin-bottom:5%;
     }
     
-`
+`;
 

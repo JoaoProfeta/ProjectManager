@@ -20,4 +20,4 @@ export const StyledMessage = styled.div`
         background-color: #f8d7da;
         border-color: #f5c6cb;
     }
-`
+`;
