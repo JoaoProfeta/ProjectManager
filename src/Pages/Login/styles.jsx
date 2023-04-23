@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Login = styled.div`
+export const StyledSign = styled.div`
   height: 75vh;
   width: 100%;
   display: flex;

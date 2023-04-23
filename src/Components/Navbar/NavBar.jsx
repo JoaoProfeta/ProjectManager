@@ -28,12 +28,6 @@ export const NavBar = () => {
     { to: "/", name: "Home", id: 1, key: "home", loggedIn: true},
     { to: "/projects", name: "Projects", id: 3, key: "projects", loggedIn: logged },
     { to: "/newproject", name: "New Project", id: 4, key: "newproject", loggedIn: logged },
-<<<<<<< HEAD
-    { to: "/login", name: "SignIn", id: 5, key: "login", loggedIn: !logged },
-    { to: "/cadastro", name: "SignUp", id: 6, key: "cadastro", loggedIn: !logged },
-    {to:"/user", name: "User",id:7, key: "user", loggedIn:logged}
-    
-=======
 =======
   const navPagesLinks = [
     { to: "/", name: "Home", id: 1, key: "home", loggedIn: true },
@@ -45,7 +39,6 @@ export const NavBar = () => {
     { to: "/cadastro", name: "Cadastre-se", id: 6, key: "cadastro", loggedIn: !logged },
     { to: "/user", name: "User", id: 7, key: "user", loggedIn: logged }
 
->>>>>>> d60250c1da021efbb0828b42adfef35b3559b4e6
   ].filter(item => item.loggedIn === true)
 
   const exitUser = () => {

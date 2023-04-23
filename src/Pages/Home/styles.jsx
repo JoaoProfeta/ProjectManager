@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HomePage = styled.section`
+export const StyledHome = styled.section`
     
     width: 100%;
     display: flex;

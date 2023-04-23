@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ProjectPage = styled.div`
+export const StyledProjects = styled.div`
     padding:2em;
 
 

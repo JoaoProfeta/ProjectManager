@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-export const NewPJ = styled.div`
+export const StyledNewProject = styled.div`
     width: 450px;
     margin:0 auto;
     padding: 3em;

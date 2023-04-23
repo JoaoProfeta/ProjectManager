@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Cont = styled.div`
+export const StyledContainer = styled.div`
   width: 1200px;
   display: flex;
   justify-content: space-between;

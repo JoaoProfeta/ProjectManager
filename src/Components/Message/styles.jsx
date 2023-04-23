@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
  
-export const MessagePopup = styled.div`
+export const StyledMessage = styled.div`
     width: 100%;
     padding: 1em;
     border: 1px solid #000;

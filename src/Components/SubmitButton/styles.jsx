@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SubmitButton = styled.button`
   button {
-    background-color: #222;
+    background-color: rgb(34, 34, 34);
     color: #fff;
     padding: 0.7em 1.2em;
     text-decoration: none;
