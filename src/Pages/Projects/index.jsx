@@ -1,35 +1,29 @@
-import { StyledProjects } from "./styles";
-import { Message } from "../../Components/Message/Message"
-import { Container } from "../../Components/Container/Container";
-import { Loading } from "../../Components/Loading/Loading"
-import { ProjectCard } from "../../Components/ProjectCard/ProjectCard";
+import { ProjectPage } from "./styles";
+import { Message } from "../../Components/Message";
+import { Container } from "../../Components/Container";
+import { LinkButton } from "../../Components/linkButtom";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-
+import { CardTeste } from "./cardTest";
+import { Submit } from "../../Components/SubmitButton";
 
 export const Projects = () => {
   
   const [project, setProject] = useState([]);
-  
-  const { state } = useLocation()
 
-  useEffect(() => {
-    if(state === null){
-      return console.log("não tem nada aqui")
-    }else{
-      setProject(state.projects)
-    }
-    //outra forma: !!state && setProjects(state.projects)
-  }, [])
-
-  const handleRemove = ()=>{
-    setProject(state)
-  }
   
+
+  useEffect(()=>{
+    const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+
+  setProject(getUserLoggedIn.projects)
+  },[])
+  
+ 
 
   return (
-    <StyledProjects>
+    <ProjectPage>
       <div className="title_container">
         <h1>Meus projetos</h1>
 
@@ -47,6 +41,7 @@ export const Projects = () => {
                 id={projects.id}
                 budget={projects.budget}
                 key={projects.id}
+                category={projects.category}
                 
               />
             )
@@ -55,7 +50,7 @@ export const Projects = () => {
 
 
       </Container>
-      
-    </StyledProjects>
+      <Submit text="apagar"/>
+    </ProjectPage>
   );
 };

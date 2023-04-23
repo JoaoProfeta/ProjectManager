@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const StyledNav = styled.div`
     display: flex;
     justify-content: space-around;
-    background-color:#222;
+    background-color:#0d1b2a;
     padding: 1em;
         ul{
             display: flex;
@@ -14,6 +14,17 @@ export const StyledNav = styled.div`
         }
         li{
             margin-right: 1em;
+        }
+        .logo{
+            text-decoration: none;
+            color: #fff;
+<<<<<<< HEAD:src/Components/Navbar/styles.jsx
+            
+        }
+        .logo h1{
+
+=======
+>>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/Layout/Navbar/styles.jsx
         }
         .link_style{
             text-decoration: none;
