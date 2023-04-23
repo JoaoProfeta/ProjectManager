@@ -1,10 +1,6 @@
 
 import { Card } from "./styles"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs"
-<<<<<<< HEAD:src/Components/ProjectCard/index.jsx
-=======
-import { Button } from "../SubmitButton/SubmitButton"
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectCard/ProjectCard.jsx
 import { Link } from "react-router-dom"
 
 export const ProjectCard = ({ id, name, budget, category, handleRemove}) => {

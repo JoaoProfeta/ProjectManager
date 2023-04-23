@@ -1,6 +1,4 @@
-import { HomePage } from "./styles";
-import saving from "../../assets/savings.svg";
-import { LinkButton } from "../../Components/linkButtom";
+import { StyledHome } from "./styles";
 import headerlogo from "../../assets/headerlogo.svg"
 import { Section, SectionTypeTwo } from "../../Components/section";
 import magnament from "../../assets/magnamentproject.svg"
@@ -8,7 +6,7 @@ import company from "../../assets/company.svg"
 import analytic from "../../assets/analytcproject.svg"
 export const Home = () => {
   return (
-    <HomePage>
+    <StyledHome>
       <div>
         <h1>
           Welcome to your <span>Manager projects</span>
@@ -43,6 +41,6 @@ export const Home = () => {
         alt="image promotional"
       />
 
-    </HomePage>
+    </StyledHome>
   );
 };

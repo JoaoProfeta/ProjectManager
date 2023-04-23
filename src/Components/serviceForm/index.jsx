@@ -1,12 +1,7 @@
 import { FormForService } from "./styles"
 import { useState } from "react"
-<<<<<<< HEAD:src/Components/serviceForm/index.jsx
 import { Input } from "../Input"
 import { Submit } from "../SubmitButton"
-=======
-import { Input } from "../Input/input"
-import { Button } from "../SubmitButton/SubmitButton"
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/service/ServiceForm.jsx
 
 export const ServiceForm = ({ handleSubmit, textBtn, projectData }) => {
 

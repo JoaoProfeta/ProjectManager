@@ -1,24 +1,14 @@
 import { EditCard } from "./styles";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-<<<<<<< HEAD:src/Pages/ProjectEdit/index.jsx
-import { Loading } from "../../Components/Loading";
-import { Container } from "../../Components/Container";
-import { ProjectForm } from "../../Components/ProjectForm";
-import { Message } from "../../Components/Message";
+import { Loading } from "../Loading";
+import { Container } from "../Container";
+import { ProjectForm } from "../ProjectForm";
+import { Message } from "../Message";
 
-import { ServiceForm } from "../../Components/serviceForm";
+import { ServiceForm } from "../serviceForm";
 import { parse, v4 as uuidv4 } from "uuid";
-import { ServiceCard } from "../../Components/serviceCard";
-=======
-import { Loading } from "../Loading/Loading";
-import { Container } from "../Container/Container";
-import { ProjectForm } from "../ProjectForm/ProjectForm";
-import { Message } from "../Message/Message";
-import { ServiceForm } from "../service/ServiceForm";
-import { parse, v4 as uuidv4 } from "uuid";
-import { ServiceCard } from "../service/serviceCard/ServiceCard";
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectEdit/ProjectEdit.jsx
+import { ServiceCard } from "../serviceCard";
 export const ProjectEdit = () => {
   const { id } = useParams();
   const [edit, setEdit] = useState([]);

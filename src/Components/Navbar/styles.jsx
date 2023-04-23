@@ -18,25 +18,18 @@ export const StyledNav = styled.div`
         .logo{
             text-decoration: none;
             color: #fff;
-<<<<<<< HEAD:src/Components/Navbar/styles.jsx
             
         }
         .logo h1{
 
-=======
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/Layout/Navbar/styles.jsx
         }
         .link_style{
             text-decoration: none;
             color: #fff;
         }
         .link_style:hover{
-<<<<<<< HEAD
             color: #778da9;
             
-=======
-            color: #ffbb33;  
->>>>>>> d60250c1da021efbb0828b42adfef35b3559b4e6
         }
         .active{
             text-decoration: none;
