@@ -19,5 +19,8 @@ export const StyledSection = styled.section`
     img{
         max-width: 400px;
     }
+		a{
+			background-color: #778da9;
+		}
    
 `;

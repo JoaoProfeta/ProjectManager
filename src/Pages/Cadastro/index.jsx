@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
@@ -6,7 +5,7 @@ import { StyledSignUp } from "./styles";
 
 
 
-export const CadastroPage = () => {
+export function CadastroPage() {
 
 	const [ signup, setSignup ] = useState([]);
 
@@ -16,13 +15,13 @@ export const CadastroPage = () => {
 		const projects = [];
 		const cost = 0;
 		const services = [];
-		setSignup({ ...signup, [e.target.name]: e.target.value,projects,cost,services });
+		setSignup({ ...signup, [e.target.name]: e.target.value, projects, cost, services });
 	};
 
 	function handleSubmit(e) {
 		e.preventDefault();
 		signup.id = uuid();
-    
+
 
 		// busca usuários existentes no localStorage
 		const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -41,51 +40,59 @@ export const CadastroPage = () => {
 		<StyledSignUp>
 			<form action="">
 				<label htmlFor="email">
-          E-mail
+					E-mail
 					<input
-						type="text"
-						name="email"
 						id="email"
+						name="email"
 						onChange={handleOnChange}
-					/>
-				</label>
-				<label htmlFor="nome">
-          Nome
-					<input
 						type="text"
-						name="nome"
+					/>
+				</label>
+
+				<label htmlFor="nome">
+					Nome
+					<input
 						id="nome"
+						name="nome"
 						onChange={handleOnChange}
+						type="text"
 					/>
 				</label>
+
 				<label htmlFor="senha">
-          Senha
+					Senha
 					<input
-						type="password"
-						name="senha"
 						id="senha"
+						name="senha"
 						onChange={handleOnChange}
-					/>
-				</label>
-				<label htmlFor="repetir-senha">
-          Repita a senha
-					<input
 						type="password"
-						name="repetir-senha"
-						id="repetir-senha"
 					/>
 				</label>
+
+				<label htmlFor="repetir-senha">
+					Repita a senha
+					<input
+						id="repetir-senha"
+						name="repetir-senha"
+						type="password"
+					/>
+				</label>
+
 				<button
 					onClick={handleSubmit}
 					type="submit"
 				>
-          Cadastre-se
+					Cadastre-se
 				</button>
+
 				<div>
-          já tem conta?<Link to="/login">Login</Link>
+					já tem conta?
+					<Link to="/login">
+						Login
+					</Link>
 				</div>
 			</form>
 		</StyledSignUp>
 	);
-};
+}
 

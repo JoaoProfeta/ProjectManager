@@ -2,14 +2,20 @@ import { ProjectForm } from "../../Components/ProjectForm";
 import { StyledNewProject } from "./styles";
 
 
-export const NewProject = () => {
+export function NewProject () {
 
 	return (
 		<StyledNewProject>
-			<h1>Criar Projeto</h1>
-			<p>Crie seu projeto para depois adicionar seus serviços</p>
+      	<h1>
+        	Criar Projeto
+      	</h1>
 
-			<ProjectForm/>
+      	<p>
+      		Crie seu projeto para depois adicionar seus serviços
+			  </p>
+
+			<ProjectForm />
 		</StyledNewProject>
 	);
-};
+
+}

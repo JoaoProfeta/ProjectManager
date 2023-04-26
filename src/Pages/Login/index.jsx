@@ -5,81 +5,96 @@ import { Submit } from "../../Components/SubmitButton";
 import { StyledSign } from "./styles";
 
 
-export const LoginPage = () => {
+export function LoginPage () {
 
-	const navigate = useNavigate();
-
-
-	const [ log, setLog ] = useState([]);
+	const navigate = useNavigate(),
 
 
-	//setar informações de usuários
-	const handleOnChange = (e) => {
-		setLog({ ...log, [e.target.name]: e.target.value });
-	};//pegando o nome da propriedade e o valor que abriga os inputs(senha e email)
+	 [
+			log,
+			setLog
+		] = useState([]),
 
 
+		// Setar informações de usuários
+	 handleOnChange = (e) => {
 
-	const handleSubmit = (e) => {
-    
-		//validador de email e senha|| 
-		const users = JSON.parse(localStorage.getItem("users")) || [];
-		const user = users.find((user) => user.email === log.email && user.password === log.password);
+			setLog({ ...log, [e.target.name]: e.target.value });
+
+		}, // Pegando o nome da propriedade e o valor que abriga os inputs(senha e email)
 
 
-		if (user) {
-			// Salva as informações do usuário no localStorage
-			return localStorage.setItem("loggedInUser", JSON.stringify(user));
+	 handleSubmit = () => {
 
-			// Redireciona o usuário para a página de dashboard
-		} else {
+			// Validador de email e senha||
+			const users = JSON.parse(localStorage.getItem("users")) || [],
+		 user = users.find((user) => user.email === log.email && user.password === log.password);
+
+
+			if (user) {
+
+				// Salva as informações do usuário no localStorage
+				return localStorage.setItem(
+					"loggedInUser",
+					JSON.stringify(user)
+				);
+
+				// Redireciona o usuário para a página de dashboard
+
+			}
 			// Exibe uma mensagem de erro para o usuário
 			alert("Email ou senha incorretos");
+			console.log(user);
 
-		}
-		console.log(user);
-  
-	};
-	const exitUser = () => {
-		localStorage.removeItem("loggedInUser");
-		location.reload();
-		navigate("/");
-	};
+		},
+	 exitUser = () => {
 
+			localStorage.removeItem("loggedInUser");
+			location.reload();
+			navigate("/");
+
+		};
 
 
 	return (
 		<StyledSign>
 			<form action="">
 				<label htmlFor="email">
-          E-mail
+            E-mail
 					<input
-						type="text"
-						name="email"
 						id="email"
+						name="email"
 						onChange={handleOnChange}
+						type="text"
 					/>
 				</label>
+
 				<label htmlFor="senha">
-          Senha
+            Senha
 					<input
-						type="password"
-						name="senha"
 						id="senha"
+						name="senha"
 						onChange={handleOnChange}
+						type="password"
 					/>
 				</label>
+
 				<Submit
-					onClick={handleSubmit}
-					type="submit"
 					disabled
-					text={"Login"}
+					onClick={handleSubmit}
+					text="Login"
+					type="submit"
 				/>
+
 				<div>
-          Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
+            Não tem conta?
+					<Link to="/cadastro">
+              Cadastre-se
+					</Link>
 				</div>
 			</form>
 		</StyledSign>
 	);
-};
+
+}
 

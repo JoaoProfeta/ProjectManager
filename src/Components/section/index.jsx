@@ -3,32 +3,51 @@ import { StyledSection } from "./styles";
 import { LinkButton } from "../linkButtom";
 
 
+export function Section ({ textPromotional, imgProtional, alt, buttonExists }) {
 
-export const Section = ({ textPromotional,imgProtional,alt, buttonExists })=>{
-
-	return(
+	return (
 		<StyledSection >
 			<div>
 				{textPromotional}
-				<div className="divBtn">{buttonExists && <LinkButton to="/login" text="Start login"/>}</div>
+
+				<div
+					className="divBtn"
+				>
+					{buttonExists
+						? <LinkButton
+        text="Start login"
+        to="/login"
+						  />
+						: null}
+				</div>
 			</div>
+
 			<div>
-				<img src={imgProtional} alt={alt} />
+				<img
+    alt={alt}
+    src={imgProtional}
+				/>
 			</div>
 		</StyledSection>
 	);
-};
 
-export const SectionTypeTwo = ({ textPromotional,imgProtional,alt, buttonExists })=>{
+}
 
-	return(
+export function SectionTypeTwo ({ textPromotional, imgProtional, alt, buttonExists }) {
+
+	return (
 		<StyledSection>
 			<div>
-				<img src={imgProtional} alt={alt} />
+				<img
+    alt={alt}
+    src={imgProtional}
+				/>
 			</div>
+
 			<div>
 				{textPromotional}
 			</div>
 		</StyledSection>
 	);
-};
+
+}
