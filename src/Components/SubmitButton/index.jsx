@@ -1,8 +1,8 @@
 import { SubmitButton } from "./styles";
 
-export const Submit = ({ text,disabled }) => {
+export const Submit = ({ text,disabled, ...rest }) => {
 	return (
-		<SubmitButton disabled={disabled}>
+		<SubmitButton disabled={disabled} {...rest}>
 			{text}
 		</SubmitButton>
 	);

@@ -22,18 +22,14 @@ export const StyledSign = styled.div`
     box-shadow: 1px 1px 20px 5px #ffbb33;
 
   }
-  input {
-    padding: 5px;
+	input {
+		margin-top: 5px;
+    padding: 8px;
     border-radius: 10px;
     outline: 0;
-    border: 2px solid #ffbb33;
+    border: 2px solid #415a77;
     color: #222;
     font-weight: 700;
-  }
-  button {
-    background-color: #ffbb33;
-    padding: 5px;
-    border-radius: 10px;
   }
   label {
     display: flex;
@@ -41,7 +37,7 @@ export const StyledSign = styled.div`
     font-size: 1.2em;
     
   } 
-  a {
+  a{
     text-decoration: none;
     color: #ffbb33;
     padding: 5px;
@@ -52,7 +48,11 @@ export const StyledSign = styled.div`
     border-radius: 10px;
     border: 2px solid #ffbb33;
   }
-
+	.error{
+		color: red;
+		display: block;
+		background-color: #ffff;
+	}
 `;
 
 

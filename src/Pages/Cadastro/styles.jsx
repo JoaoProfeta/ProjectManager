@@ -20,31 +20,25 @@ export const StyledSignUp = styled.div`
     padding: 5%;
     border-radius: 10px;
     color: #fff;
-    box-shadow: 1px 1px 20px 5px #ffbb33;
+		box-shadow: 1px 1px 20px 5px #415a77;
 
   }
-  input{
-    padding: 5px;
-    border-radius: 10px;
-    outline: 0;
-    border: 2px solid #ffbb33;
-    color: #222;
-    font-weight: 700;
-  }
-  button {
-    background-color: #ffbb33;
+	button{
+    background-color: #415a77;
     padding: 5px;
     border-radius: 10px;
   }
-  label {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2em;
-    
-  } 
-  a {
+  a{
     text-decoration: none;
-    color: #ffbb33;
+    color: #778da9;
+    padding: 4px;
+		margin-left: 3px;
+    
+  }
+  a:hover{
+    color: #fff;
+    border-radius: 10px;
+    border: 2px solid #415a77;
   }
   
 

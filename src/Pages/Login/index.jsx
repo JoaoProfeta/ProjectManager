@@ -1,97 +1,96 @@
 
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { Submit } from "../../Components/SubmitButton";
+import { signInFormSchema } from "../../Components/validators";
 import { StyledSign } from "./styles";
 
-
 export function LoginPage () {
-
-	const navigate = useNavigate(),
-
-
-	 [
-			log,
-			setLog
-		] = useState([]),
+	
+	const { register,handleSubmit, formState: { errors } } = useForm({
+		resolver: yupResolver(signInFormSchema),
+	});
+	// Setar informações de usuários
 
 
-		// Setar informações de usuários
-	 handleOnChange = (e) => {
+	const handleOnSubmit = ({ email,password }) => {
+		
+		console.log(email,password);
 
-			setLog({ ...log, [e.target.name]: e.target.value });
+		// Validador de email e senha||
+		const users = JSON.parse(localStorage.getItem("users")) || [];
+		
+		const user = users.find((user) => user.email === email && user.password === password);
+		console.log(user);
+		if (user) {
+			
+			// Salva as informações do usuário no localStorage
+			return localStorage.setItem(
+				"loggedInUser",
+				JSON.stringify(user)
+			);
+			// Redireciona o usuário para a página de dashboard
+		}
+		// Exibe uma mensagem de erro para o usuário
+		//alert("Email ou senha incorretos");
+		//console.log(user);
 
-		}, // Pegando o nome da propriedade e o valor que abriga os inputs(senha e email)
-
-
-	 handleSubmit = () => {
-
-			// Validador de email e senha||
-			const users = JSON.parse(localStorage.getItem("users")) || [],
-		 user = users.find((user) => user.email === log.email && user.password === log.password);
-
-
-			if (user) {
-
-				// Salva as informações do usuário no localStorage
-				return localStorage.setItem(
-					"loggedInUser",
-					JSON.stringify(user)
-				);
-
-				// Redireciona o usuário para a página de dashboard
-
-			}
-			// Exibe uma mensagem de erro para o usuário
-			alert("Email ou senha incorretos");
-			console.log(user);
-
-		},
-	 exitUser = () => {
-
-			localStorage.removeItem("loggedInUser");
-			location.reload();
-			navigate("/");
-
-		};
-
-
+	};
+	const [ change,setChange ] = useState(false);
+	const onSubmit = () => {
+		setChange(false);
+	};
 	return (
 		<StyledSign>
-			<form action="">
+			<form onSubmit={handleSubmit(handleOnSubmit)}>
+
 				<label htmlFor="email">
-            E-mail
+          E-mail
 					<input
-						id="email"
-						name="email"
-						onChange={handleOnChange}
 						type="text"
+						name="email"
+						id="email"
+						{...register("email")}
+						onBlurCapture={()=>{
+							if(change === false){
+								setChange(true);
+							}
+						}}	
 					/>
+					
 				</label>
-
+				<p className="error">
+					{change ? undefined : errors.email?.message}
+				</p>
 				<label htmlFor="senha">
-            Senha
+          Senha
 					<input
-						id="senha"
-						name="senha"
-						onChange={handleOnChange}
 						type="password"
+						name="senha"
+						id="senha"
+						onBlurCapture={()=>{
+							if(change === false){
+								setChange(true);
+							}
+						}}
+						{...register("password")}
 					/>
+					
 				</label>
-
+				<p className="error">
+					{change ? undefined : errors.password?.message}
+				</p>
 				<Submit
-					disabled
-					onClick={handleSubmit}
-					text="Login"
 					type="submit"
+					text="Login"
+					onClick={onSubmit}
 				/>
-
 				<div>
-            Não tem conta?
-					<Link to="/cadastro">
-              Cadastre-se
-					</Link>
+          Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
 				</div>
+
 			</form>
 		</StyledSign>
 	);

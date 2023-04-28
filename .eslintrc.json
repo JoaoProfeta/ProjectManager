@@ -26,12 +26,13 @@
 		"no-duplicate-imports": ["error"],
 		"no-mixed-spaces-and-tabs": ["off"],
 		"react/prop-types":["off"],
-    "react/jsx-uses-vars": ["error"]
-
-		
-
-
-	}
-
+    "react/jsx-uses-vars": ["error"],
+		"react/jsx-no-undef":["off"]
+	},
+	"settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 	
 }

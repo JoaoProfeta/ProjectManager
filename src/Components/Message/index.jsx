@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
+
 import { StyledMessage } from "./styles";
-export const Message = ({ type, msg }) => {
+export const Message = ({ msg }) => {
 
-	const [ visible, setVisible ] = useState(false);
-
-	useEffect(() => {
-		if (!msg) {
-			setVisible(false);
-			return;
-		}
-		setVisible(true);
-
-		const timer = setTimeout(() => {
-			setVisible(false);
-		}, 3000);
-
-		return () => clearTimeout(timer);
-	}, [msg]);
-
-	return <>{visible && <StyledMessage className={type}>{msg}</StyledMessage>}</>;
+	return (
+		<StyledMessage>
+			<span>{msg}</span>
+		</StyledMessage>
+	);
 };

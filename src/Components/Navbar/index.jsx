@@ -27,9 +27,9 @@ export const NavBar = () => {
 	const exitUser = () => {
 
 		localStorage.removeItem("loggedInUser");
-
+		location.reload();
 		navigate("/");
-  
+
 	};
   
 	return (

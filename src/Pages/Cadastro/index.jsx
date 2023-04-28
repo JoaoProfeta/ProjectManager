@@ -19,15 +19,19 @@ export function CadastroPage() {
 	};
 
 	function handleSubmit(e) {
+		
 		e.preventDefault();
+
 		signup.id = uuid();
 
 
 		// busca usuários existentes no localStorage
 		const users = JSON.parse(localStorage.getItem("users")) || [];
+
 		// adiciona o novo usuário ao array
 		const updatedUsers = [ ...users, signup, ];
 		console.log(" verificando", signup);
+
 		// salva o novo array no localStorag
 		localStorage.setItem("users", JSON.stringify(updatedUsers));
 		//console.log(updatedUsers);
@@ -49,11 +53,11 @@ export function CadastroPage() {
 					/>
 				</label>
 
-				<label htmlFor="nome">
-					Nome
+				<label htmlFor="user-name">
+					User name
 					<input
-						id="nome"
-						name="nome"
+						id="user-name"
+						name="user-name"
 						onChange={handleOnChange}
 						type="text"
 					/>
@@ -62,8 +66,8 @@ export function CadastroPage() {
 				<label htmlFor="senha">
 					Senha
 					<input
-						id="senha"
-						name="senha"
+						id="password"
+						name="password"
 						onChange={handleOnChange}
 						type="password"
 					/>
@@ -72,7 +76,7 @@ export function CadastroPage() {
 				<label htmlFor="repetir-senha">
 					Repita a senha
 					<input
-						id="repetir-senha"
+						id="repeat-password"
 						name="repetir-senha"
 						type="password"
 					/>
