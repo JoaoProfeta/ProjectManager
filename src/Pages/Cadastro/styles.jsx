@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 export const StyledSignUp = styled.div`
-  width: 100%;
+	width: 100vw;
 	height: 80vh;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@ export const StyledSignUp = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 30%;
+    width: 400px;
     height: 90%;
     background-color: #0d1b2a;
     padding: 5%;
@@ -56,6 +56,7 @@ export const StyledSignUp = styled.div`
 		border:none;
 		font-size: 1.2em;
 		color: #fff;
+		margin-top: 5px;
 	}
 	.sign-button:hover{
 		background-color: #415a77;

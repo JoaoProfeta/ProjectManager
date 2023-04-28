@@ -13,7 +13,7 @@ export const StyledSign = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 30%;
+    width: 400px;
     height: 75%;
     background-color: #0d1b2a;
     padding: 5%;

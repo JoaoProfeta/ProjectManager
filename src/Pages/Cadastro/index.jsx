@@ -1,90 +1,113 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import { signUpFormSchema } from "../../Components/validators/signUp";
 import { StyledSignUp } from "./styles";
-
-
 
 export function CadastroPage() {
 
-	const [ signup, setSignup ] = useState([]);
+	const { register,formState : { errors }, handleSubmit } = useForm({
+		resolver: yupResolver(signUpFormSchema)
+	});
 
-
-
-	const handleOnChange = (e) => {
+	const handleOnSubmit=({ email,userName,password, id })=> {
 		const projects = [];
 		const cost = 0;
 		const services = [];
-		setSignup({ ...signup, [e.target.name]: e.target.value, projects, cost, services });
+
+		id=uuid();
+
+		const UserFindLocalStorage= { email,userName,password,id,projects,cost,services };
+
+		const getUsers = JSON.parse(localStorage.getItem("users")) || []; 
+
+		const userAddInLocalStorage	= [ ...getUsers, UserFindLocalStorage ];
+
+		localStorage.setItem("users", JSON.stringify(userAddInLocalStorage));
 	};
-
-	function handleSubmit(e) {
-		
-		e.preventDefault();
-
-		signup.id = uuid();
-
-
-		// busca usuários existentes no localStorage
-		const users = JSON.parse(localStorage.getItem("users")) || [];
-
-		// adiciona o novo usuário ao array
-		const updatedUsers = [ ...users, signup, ];
-		console.log(" verificando", signup);
-
-		// salva o novo array no localStorag
-		localStorage.setItem("users", JSON.stringify(updatedUsers));
-		//console.log(updatedUsers);
-	}
-
+	const [ change,setChange ] = useState(false);
+	const onSubmit = () => {
+		setChange(false);
+	};
 
 
 
 	return (
 		<StyledSignUp>
-			<form action="">
+			<form action="" onSubmit={handleSubmit(handleOnSubmit)}>
 				<label htmlFor="email">
 					E-mail
 					<input
 						id="email"
 						name="email"
-						onChange={handleOnChange}
+						{...register("email")}
+						onBlurCapture={()=>{
+							if(change === false){
+								setChange(true);
+							}
+						}}	
 						type="text"
 					/>
 				</label>
-
+				<p className="error">
+					{change ? undefined : errors.email?.message}
+				</p>
 				<label htmlFor="user-name">
 					User name
 					<input
 						id="user-name"
 						name="user-name"
-						onChange={handleOnChange}
+						{...register("userName")}
+						onBlurCapture={()=>{
+							if(change === false){
+								setChange(true);
+							}
+						}}	
 						type="text"
 					/>
 				</label>
-
-				<label htmlFor="senha">
+				<p className="error">
+					{change ? undefined : errors.userName?.message}
+				</p>
+				<label htmlFor="password">
 					Password
 					<input
 						id="password"
 						name="password"
-						onChange={handleOnChange}
+						{...register("password")}
+						onBlurCapture={()=>{
+							if(change === false){
+								setChange(true);
+							}
+						}}
 						type="password"
 					/>
 				</label>
-
-				<label htmlFor="repetir-senha">
+				<p className="error">
+					{change ? undefined : errors.password?.message}
+				</p>
+				<label htmlFor="repeat-password">
 					Repeat password
 					<input
 						id="repeat-password"
-						name="repetir-senha"
+						name="repeat-password"
+						{...register("repeatPassword")}
+						onBlurCapture={()=>{
+							if(change === false){
+								setChange(true);
+							}
+						}}	
 						type="password"
 					/>
 				</label>
-
+				<p className="error">
+					{change ? undefined : errors.repeatPassword?.message}
+				</p>
 				<button
 					className="sign-button"
-					onClick={handleSubmit}
+					onClick={onSubmit}
 					type="submit"
 				>
 					SignUp

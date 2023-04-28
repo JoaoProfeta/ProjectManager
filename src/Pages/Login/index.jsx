@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { signInFormSchema } from "../../Components/validators";
+import { signInFormSchema } from "../../Components/validators/signIn";
 import { StyledSign } from "./styles";
 
 export function LoginPage () {
