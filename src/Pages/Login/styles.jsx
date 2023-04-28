@@ -2,19 +2,18 @@ import styled from "styled-components";
 
 export const StyledSign = styled.div`
   height: 75vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
-
+	border: 1px solid red;
   form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 400px;
-    height: 75%;
+    height: 400px;
     background-color: #0d1b2a;
     padding: 5%;
     border-radius: 10px;

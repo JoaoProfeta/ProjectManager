@@ -8,6 +8,7 @@ export const StyledFooter = styled.footer`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	width: 100%;
 
   span {
 		font-size: 1.2em;

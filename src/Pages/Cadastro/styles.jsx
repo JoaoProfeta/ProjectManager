@@ -14,7 +14,7 @@ export const StyledSignUp = styled.div`
     flex-direction: column;
     justify-content: space-around;
     width: 400px;
-    height: 90%;
+    height: 500px;
     background-color: #0d1b2a;
     padding: 5%;
     border-radius: 10px;
