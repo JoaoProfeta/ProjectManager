@@ -64,7 +64,7 @@ export function CadastroPage() {
 				</label>
 
 				<label htmlFor="senha">
-					Senha
+					Password
 					<input
 						id="password"
 						name="password"
@@ -74,7 +74,7 @@ export function CadastroPage() {
 				</label>
 
 				<label htmlFor="repetir-senha">
-					Repita a senha
+					Repeat password
 					<input
 						id="repeat-password"
 						name="repetir-senha"
@@ -83,16 +83,17 @@ export function CadastroPage() {
 				</label>
 
 				<button
+					className="sign-button"
 					onClick={handleSubmit}
 					type="submit"
 				>
-					Cadastre-se
+					SignUp
 				</button>
 
 				<div>
-					já tem conta?
+					Already have an account?
 					<Link to="/login">
-						Login
+						SignIn
 					</Link>
 				</div>
 			</form>

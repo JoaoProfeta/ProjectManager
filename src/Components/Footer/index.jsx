@@ -3,7 +3,7 @@ import { StyledFooter } from "./styles";
 export const Footer = () => {
 	return (
 		<StyledFooter>
-			<div>
+			<div id="contact-container">
 				<p>Contact</p>
 				<ul className="contact">
 					<li>E-mail: managerprojects@hotmail.com</li>

@@ -27,7 +27,8 @@
 		"no-mixed-spaces-and-tabs": ["off"],
 		"react/prop-types":["off"],
     "react/jsx-uses-vars": ["error"],
-		"react/jsx-no-undef":["off"]
+		"react/jsx-no-undef":["off"],
+		"react/no-unescaped-entities":["off"]
 	},
 	"settings": {
     "react": {

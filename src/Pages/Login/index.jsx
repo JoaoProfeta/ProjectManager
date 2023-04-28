@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Submit } from "../../Components/SubmitButton";
 import { signInFormSchema } from "../../Components/validators";
 import { StyledSign } from "./styles";
 
@@ -65,7 +64,7 @@ export function LoginPage () {
 					{change ? undefined : errors.email?.message}
 				</p>
 				<label htmlFor="senha">
-          Senha
+          Password
 					<input
 						type="password"
 						name="senha"
@@ -82,13 +81,17 @@ export function LoginPage () {
 				<p className="error">
 					{change ? undefined : errors.password?.message}
 				</p>
-				<Submit
+				<button 
 					type="submit"
-					text="Login"
 					onClick={onSubmit}
-				/>
+					className="sign-button"
+				>
+					Login
+				</button>
+
 				<div>
-          Não tem conta?<Link to="/cadastro">Cadastre-se</Link>
+
+					Don't have an account?<Link to="/cadastro">SignUp</Link>
 				</div>
 
 			</form>

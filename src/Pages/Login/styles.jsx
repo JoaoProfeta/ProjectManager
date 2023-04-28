@@ -15,11 +15,11 @@ export const StyledSign = styled.div`
     justify-content: space-around;
     width: 30%;
     height: 75%;
-    background-color: #222;
+    background-color: #0d1b2a;
     padding: 5%;
     border-radius: 10px;
     color: #fff;
-    box-shadow: 1px 1px 20px 5px #ffbb33;
+    box-shadow: 1px 1px 20px 5px #415a77;
 
   }
 	input {
@@ -39,41 +39,30 @@ export const StyledSign = styled.div`
   } 
   a{
     text-decoration: none;
-    color: #ffbb33;
+    color: #778da9;
     padding: 5px;
     
   }
   a:hover{
-    color: #fff;
+    color: #415a77;
     border-radius: 10px;
-    border: 2px solid #ffbb33;
+
   }
+	.sign-button{
+		background-color: #778da9;
+		padding: 5px;
+		border-radius: 5px;
+		cursor:pointer;
+		border:none;
+		font-size: 1.2em;
+		color: #fff;
+	}
+	.sign-button:hover{
+		background-color: #415a77;
+	}
 	.error{
 		color: red;
 		display: block;
-		background-color: #ffff;
+
 	}
-`;
-
-
-
-export const ButtonCustomized = styled.button`
-
-  ${(props) => props.disabled === true &&`
-     &:hover{
-      background-color:#222;
-      color:#ffff;
-      border:2px solid #ffbb33;
-     }
-    `
-}
-  ${(props) => props.disabled === true &&`
-     &:hover{
-      background-color:#222;
-      color:#ffff;
-      border:2px solid #ffbb33;
-     }
-    `
-}
-
 `;

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-import { StyledInput, StyledInputForm } from "./Styles";
+import { StyledInput } from "./Styles";
 
 
 export const Input = ({ text, name, handleOnChange, ...rest }) => {
@@ -14,19 +14,5 @@ export const Input = ({ text, name, handleOnChange, ...rest }) => {
 				onChange={handleOnChange}
 			/>
 		</StyledInput>
-	);
-};
-export const InputForm = ({ text, error,name, handleOnChange, ...rest }) => {
-	return (
-		<StyledInputForm isErrored={!!error}>
-			<label htmlFor={name}>{text}</label>
-			<input
-				id={name}
-				name={name}
-				onChange={handleOnChange}
-				{...rest}
-			/>
-			{!!error && <span>{error.message}</span>}
-		</StyledInputForm>
 	);
 };
