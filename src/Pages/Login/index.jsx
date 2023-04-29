@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { signInFormSchema } from "../../Components/validators/signIn";
 import { StyledSign } from "./styles";
-
+import bcrypt from "bcryptjs";
 export function LoginPage () {
 	
 	const { register,handleSubmit, formState: { errors } } = useForm({
@@ -16,13 +16,24 @@ export function LoginPage () {
 
 	const handleOnSubmit = ({ email,password }) => {
 		
-		console.log(email,password);
+
+
+
+		const pickingUpPasswordSignIn = password;
+		const decryptPassword = (passwordFind,storedPassword) => {
+			
+			return bcrypt.compareSync(passwordFind,storedPassword);
+		};
+
+
 
 		// Validador de email e senha||
 		const users = JSON.parse(localStorage.getItem("users")) || [];
-		
-		const user = users.find((user) => user.email === email && user.password === password);
+
+		const user = users.find((user) => user.email === email && decryptPassword(pickingUpPasswordSignIn,user.passwordUser)===true);
+
 		console.log(user);
+
 		if (user) {
 			
 			// Salva as informações do usuário no localStorage

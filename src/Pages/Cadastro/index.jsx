@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { signUpFormSchema } from "../../Components/validators/signUp";
 import { StyledSignUp } from "./styles";
+// eslint-disable-next-line no-unused-vars
+import bcrypt from "bcryptjs";
 
 export function CadastroPage() {
-
+	
 	const { register,formState : { errors }, handleSubmit } = useForm({
 		resolver: yupResolver(signUpFormSchema)
 	});
@@ -18,8 +20,20 @@ export function CadastroPage() {
 		const services = [];
 
 		id=uuid();
+		const getPassword = password;
+		const encryptPassword= (PasswordFind) => {
+			const salt = bcrypt.genSaltSync(10);
+			return bcrypt.hashSync(PasswordFind, salt);
+		};
+		const passwordUser = encryptPassword(getPassword);
+		console.log(passwordUser);
 
-		const UserFindLocalStorage= { email,userName,password,id,projects,cost,services };
+		
+
+
+
+
+		const UserFindLocalStorage = { email,userName,passwordUser,id,projects,cost,services };
 
 		const getUsers = JSON.parse(localStorage.getItem("users")) || []; 
 
