@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Container } from "../../Components/Container";
 import { Submit } from "../../Components/SubmitButton";
 import { LinkButton } from "../../Components/linkButtom";
-import { CardTeste } from "./cardTest";
 import { StyledProjects } from "./styles";
+import { ProjectCard } from "../../Components/ProjectsCard";
 
 export const Projects = () => {
   
@@ -29,7 +29,7 @@ export const Projects = () => {
 				{project.length > 0 &&
         project.map((projects) => {
         	return (
-          	<CardTeste
+          	<ProjectCard
           		name={projects.name}
           		id={projects.id}
           		budget={projects.budget}

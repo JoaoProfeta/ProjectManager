@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledProjects = styled.div`
     padding:2em;
-
+		min-height: 75Vh;
 
     .title_container{
         display: flex;

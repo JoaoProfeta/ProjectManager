@@ -1,8 +1,8 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./index.css";
 import { Home } from "./Pages/Home";
-import { CadastroPage } from "./Pages/Cadastro";
-import { LoginPage } from "./Pages/Login";
+import { CadastroPage } from "./Pages/SignUp";
+import { LoginPage } from "./Pages/SignIn";
 import { NewProject } from "./Pages/NewProject";
 import { Projects } from "./Pages/Projects";
 import { Footer } from "./Components/Footer";

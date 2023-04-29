@@ -2,8 +2,8 @@ import { StyledSelect } from "./styles";
 
 export const Select = ({
 	value,
-	text,
 	name,
+	text,
 	options,
 	handleOnChange,
 	...rest
