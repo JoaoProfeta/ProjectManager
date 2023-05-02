@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 
 export const StyledContainer = styled.div`
   width: 100%;
@@ -14,7 +14,10 @@ export const StyledContainer = styled.div`
         min-height: 75%;`
 	//destruction pt exposed 2 >>>>
 };
-  ${({ start }) => start && "justify-content:flex-start;"};
+  ${({ start }) => start && css`justify-content:flex-start;
+		gap: 3%;
+		flex-wrap: wrap;
+		`};
 
   ${({ column }) =>
 		column &&

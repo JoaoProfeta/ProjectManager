@@ -15,9 +15,9 @@ export function CadastroPage() {
 	});
 
 	const handleOnSubmit=({ email,userName,password, id })=> {
+		
+
 		const projects = [];
-		const cost = 0;
-		const services = [];
 
 		id=uuid();
 		const getPassword = password;
@@ -33,7 +33,7 @@ export function CadastroPage() {
 
 
 
-		const UserFindLocalStorage = { email,userName,passwordUser,id,projects,cost,services };
+		const UserFindLocalStorage = { email,userName,passwordUser,id,projects };
 
 		const getUsers = JSON.parse(localStorage.getItem("users")) || []; 
 

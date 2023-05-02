@@ -4,7 +4,7 @@ export const Container = (props) => {
 	return (
 		<StyledContainer
 			styleHeight={props.styleHeight}
-			startStyle={props.start}
+			start={props.start}
 			columnStyle={props.column}
 		>
 			{props.children}

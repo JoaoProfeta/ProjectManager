@@ -1,13 +1,13 @@
 
 import { yupResolver } from "@hookform/resolvers/yup";
+import bcrypt from "bcryptjs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInFormSchema } from "../../Components/validators/signIn";
 import { StyledSign } from "./styles";
-import bcrypt from "bcryptjs";
 export function LoginPage () {
-	
+	const navigate = useNavigate();
 	const { register,handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(signInFormSchema),
 	});
@@ -16,7 +16,7 @@ export function LoginPage () {
 
 	const handleOnSubmit = ({ email,password }) => {
 		
-
+		navigate("/");
 
 
 		const pickingUpPasswordSignIn = password;
@@ -32,7 +32,7 @@ export function LoginPage () {
 
 		const user = users.find((user) => user.email === email && decryptPassword(pickingUpPasswordSignIn,user.passwordUser)===true);
 
-		console.log(user);
+
 
 		if (user) {
 			

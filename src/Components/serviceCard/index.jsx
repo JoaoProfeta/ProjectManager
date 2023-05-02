@@ -7,12 +7,12 @@ export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 		e.preventDefault();
 		handleRemove(id,cost);
 	};
-
+	
 	return (
 		<CardForServices>
 			<h4>{name}</h4>
 			<p>
-				<span>Custo total:</span>R${cost}
+				<span>total cost:</span>R${cost}
 			</p>
 			<p>
 				{description}

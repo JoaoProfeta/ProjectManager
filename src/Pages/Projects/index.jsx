@@ -1,30 +1,38 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container } from "../../Components/Container";
-import { Submit } from "../../Components/SubmitButton";
-import { LinkButton } from "../../Components/linkButtom";
-import { StyledProjects } from "./styles";
 import { ProjectCard } from "../../Components/ProjectsCard";
-
+import { StyledProjects } from "./styles";
 export const Projects = () => {
-  
+	const navigate = useNavigate();
 	const [ project, setProject ] = useState([]);
-
+	const [ unicIdentifier,setUnicIdentifier ] = useState();
+	const [ removeProjects,setRemoveProjects ] = useState([]);
 	useEffect(()=>{
 		const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
 
 		setProject(getUserLoggedIn.projects);
 	},[]);
-	
+	const getUserLogged = JSON.parse(localStorage.getItem("loggedInUser"));
+
+	const getProjectsByUserLogged = getUserLogged.projects;
+
+
+
+	const deleteProjectCardSelected = (e)=>{
+		const removeItemById = getProjectsByUserLogged.filter((item)=> item.id !== e);
+		console.log(removeItemById);
+		
+
+	};
 	return (
 		<StyledProjects>
 			<div className="title_container">
-				<h1>Meus projetos</h1>
-
-				<LinkButton to="/newproject" text="Criar Projeto" />
+				<h1>My Projects</h1>
 			</div>
 			{/*message && <Message msg={message} type="success" />*/}
 			{/*projectMessage && <Message msg={projectMessage} type="success" />*/}
-			<Container startStyle={true}>
+			<Container start={true}>
 
 				{project.length > 0 &&
         project.map((projects) => {
@@ -33,9 +41,10 @@ export const Projects = () => {
           		name={projects.name}
           		id={projects.id}
           		budget={projects.budget}
-          		key={projects.id}
           		category={projects.category}
-                
+        			key={projects.id}
+							
+        		
           	/>
         	);
         }
@@ -43,7 +52,6 @@ export const Projects = () => {
 
 
 			</Container>
-			<Submit text="apagar"/>
 		</StyledProjects>
 	);
 };

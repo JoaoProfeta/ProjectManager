@@ -3,10 +3,10 @@ import { Input } from "../Input";
 import { Select } from "../Select";
 import { Submit } from "../SubmitButton";
 import { StyledProjectForm } from "./styles";
-
+import { v4 as uuid } from "uuid";
 
 export function ProjectForm (){
-
+	const unicId = uuid();
 	const [	categories,setCategories ] = useState([]);
 	
 	const [ projects,setProjects	] = useState({});
@@ -37,7 +37,7 @@ export function ProjectForm (){
 		},
 		[]
 	);
-	console.log(categories);
+	
 	function handleChange (e) {
 
 		setProjects({ ...projects, [e.target.name]: e.target.value });
@@ -51,11 +51,11 @@ export function ProjectForm (){
 
 	};
 
-	function handleSubmitForm () {
-
+	function handleSubmitForm (e) {
+		e.preventDefault();
 		const categoryFind = categories.find((c) => c.id == selectedCategory);
 
-		 const newProject = { "name": projects.name, "budget": projects.budget, "id": projects.id, "category": categoryFind.name };
+		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
 
 		setUserProjects([
 			...userProjects,
@@ -71,7 +71,7 @@ export function ProjectForm (){
 
 				const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-				const updatedUser = { ...loggedInUser, "projects": userProjects };
+				const updatedUser = { ...loggedInUser, projects: userProjects };
 
 				localStorage.setItem(
 					"loggedInUser",

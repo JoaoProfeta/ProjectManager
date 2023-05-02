@@ -1,14 +1,15 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./index.css";
-import { Home } from "./Pages/Home";
-import { CadastroPage } from "./Pages/SignUp";
-import { LoginPage } from "./Pages/SignIn";
-import { NewProject } from "./Pages/NewProject";
-import { Projects } from "./Pages/Projects";
+import { Container } from "./Components/Container";
 import { Footer } from "./Components/Footer";
 import { NavBar } from "./Components/Navbar";
-import { Container } from "./Components/Container";
 import { ProjectEdit } from "./Components/ProjectEdit";
+import { Home } from "./Pages/Home";
+import { NewProject } from "./Pages/NewProject";
+import { Projects } from "./Pages/Projects";
+import { LoginPage } from "./Pages/SignIn";
+import { CadastroPage } from "./Pages/SignUp";
+import { Services } from "./Pages/servicePage";
+import "./index.css";
 
 
 
@@ -30,6 +31,7 @@ function App() {
 					<Route path="/project/:id" element={<ProjectEdit />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/cadastro" element={<CadastroPage />} />
+					<Route path="/services/:id" element={<Services/>}/>
 
 				</Routes>
 
