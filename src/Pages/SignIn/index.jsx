@@ -30,7 +30,7 @@ export function LoginPage () {
 		// Validador de email e senha||
 		const users = JSON.parse(localStorage.getItem("users")) || [];
 
-		const user = users.find((user) => user.email === email && decryptPassword(pickingUpPasswordSignIn,user.passwordUser)===true);
+		const user = users.find((user) => user.email === email && decryptPassword(pickingUpPasswordSignIn,user.token)===true);
 
 
 

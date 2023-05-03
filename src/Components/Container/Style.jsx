@@ -3,7 +3,7 @@ import styled,{css} from "styled-components";
 export const StyledContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 auto;
   flex-wrap: wrap;
 

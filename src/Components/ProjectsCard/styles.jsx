@@ -10,6 +10,7 @@ export const StyledProjectCard = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+	margin-bottom:3%;
 	h1{
 		color: #415a77;
 		text-align: center;

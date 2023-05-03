@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { Container } from "../../Components/Container";
 import { ProjectCard } from "../../Components/ProjectsCard";
 import { StyledProjects } from "./styles";
+
 export const Projects = () => {
-	const navigate = useNavigate();
+
 	const [ project, setProject ] = useState([]);
 	const [ unicIdentifier,setUnicIdentifier ] = useState();
 	const [ removeProjects,setRemoveProjects ] = useState([]);

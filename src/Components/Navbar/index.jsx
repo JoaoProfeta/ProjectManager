@@ -34,7 +34,7 @@ export const NavBar = () => {
   
 	return (
 		<StyledNav>
-			<Container>
+			<Container >
 				<Link to="/" className="logo">
 					<h1>ManagerProjects</h1>
 				</Link>

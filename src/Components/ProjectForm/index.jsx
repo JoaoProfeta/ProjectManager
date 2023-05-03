@@ -56,7 +56,7 @@ export function ProjectForm (){
 		const categoryFind = categories.find((c) => c.id == selectedCategory);
 
 		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
-
+		
 		setUserProjects([
 			...userProjects,
 			newProject

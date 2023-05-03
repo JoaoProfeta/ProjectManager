@@ -1,8 +1,8 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import { CardForServices } from "./styles";
 
-
 export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
+
 	const remove=(e)=>{
 		e.preventDefault();
 		handleRemove(id,cost);

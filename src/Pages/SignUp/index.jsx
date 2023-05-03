@@ -25,15 +25,15 @@ export function CadastroPage() {
 			const salt = bcrypt.genSaltSync(10);
 			return bcrypt.hashSync(PasswordFind, salt);
 		};
-		const passwordUser = encryptPassword(getPassword);
-		console.log(passwordUser);
+		const token = encryptPassword(getPassword);
+		console.log(token);
 
 		
 
 
 
 
-		const UserFindLocalStorage = { email,userName,passwordUser,id,projects };
+		const UserFindLocalStorage = { email,userName,token,id,projects };
 
 		const getUsers = JSON.parse(localStorage.getItem("users")) || []; 
 
