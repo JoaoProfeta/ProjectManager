@@ -3,51 +3,63 @@ import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { v4 as uuId } from "uuid";
 import { FormForService } from "./styles";
-export const ServiceForm = ({ textBtn }) => {
-
+import { ServiceCard } from "../serviceCard";
+export const ServiceForm = () => {
+	
 	const unicId= uuId();
 	const location = useLocation();
-
 	const getIdProjectSelected = location.state.userId;
-
-	const [ newServices, setNewServices ] = useState([]);
 	const [ pickProjects, setPickProjects ] = useState([]);
-	const [ userServices, setUserServices ] = useState([]);
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-	const logged = !!loggedInUser;
 	const getProjectsLoggedUser = loggedInUser.projects;
 	const { register,handleSubmit	} = useForm({});
-	
+
 	useEffect(()=>{
 		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== getIdProjectSelected);		
-		
 		setPickProjects([...filterProjectsRest]);		
-		console.log(pickProjects);
-		
+
 	},[]);
 	
 	function submit({ name,cost,description }) {
+
 		console.log({ name,cost,description });
+
 		const filterUserForAddServices = getProjectsLoggedUser.find((project) => project.id === getIdProjectSelected);
-		const getServicesForUser = filterUserForAddServices.services ;
-		const theNewService = { name,cost,description,id:unicId };
-		console.log(getServicesForUser);
-		const newProjectWithServicesAdd = { ...filterUserForAddServices, services:[ ...filterUserForAddServices.services,theNewService ]};
+		const newService = { name,cost,description,id:unicId };
+		const newProjectWithServicesAdd = { ...filterUserForAddServices, services:[ ...filterUserForAddServices.services,newService ]};
 		const reenderProjects =[ ...pickProjects,newProjectWithServicesAdd ];
-		console.log(reenderProjects);
 		localStorage.setItem("loggedInUser",JSON.stringify({ ...loggedInUser,projects: reenderProjects }));
-		
-	}
-	
-	
-	function handleChange(e) {
-		setNewServices({ ...newServices, [e.target.name]: e.target.value , });
 
+		const logged = JSON.parse(localStorage.getItem("loggedInUser"));
+		const getUsersLocalStorage = JSON.parse(localStorage.getItem("users") || []);
+		const filterUserChangeProperties = getUsersLocalStorage.filter((user)=> user.id !== logged.id);
+		localStorage.setItem("users", JSON.stringify([
+			...filterUserChangeProperties,
+			logged
+		]));
 	}
-
+	const userLogged = JSON.parse(localStorage.getItem("loggedInUser"));
+	const projectSelected = userLogged.projects.find((item)=> item.id === getIdProjectSelected);
+	const servicesByProjectSelected = projectSelected.services;
+	console.log(servicesByProjectSelected);
 	return (
 		<FormForService >
-
+			<div id="services-container">
+				
+				{!!servicesByProjectSelected &&
+					servicesByProjectSelected.map((service)=>{
+						return(
+							<ServiceCard
+								key={service.id || service.name}
+								name={service.name}
+								cost={service.cost}
+								description={service.description}
+							/>
+				
+						);
+					})
+				}
+			</div>
 			<form onSubmit={handleSubmit(submit)}>
 				<label htmlFor="name">
 					Name
@@ -69,22 +81,23 @@ export const ServiceForm = ({ textBtn }) => {
 					/>
 				</label>
 				
-				<label htmlFor="Description">
+				<label htmlFor="Description" id="description-label">
 					Description
 					<input
 						id="description"
 						name="description"
+						size=""
 						{...register("description")}
 						type="text"
 					/>
 				</label>
 				
 				<button
-					className="sign-button"
+					className="create-service"
 
 					type="submit"
 				>
-						Criar
+						Create service
 				</button>
 			</form>
 		</FormForService>

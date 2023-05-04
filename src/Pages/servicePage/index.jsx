@@ -8,7 +8,7 @@ export const Services = ()=>{
 	return(
 		<>
 			
-			<ServiceForm textBtn="Criar serviço">
+			<ServiceForm >
 
 			</ServiceForm>
 		</>

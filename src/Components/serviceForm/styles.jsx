@@ -6,21 +6,34 @@ export const FormForService = styled.div`
      margin:2em 0;
 		 min-height: 75vh;
 		 display: flex;
+		 flex-direction: row;
+		 flex-wrap: wrap;
 		 justify-content: center;
-		 align-items: center;
-		 form {
+		 align-items: end;
+		 
+	form {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 400px;
-    height: 500px;
+    flex-direction: row;
+		flex-wrap: wrap;
+    justify-content: flex-start;
+		align-items: center;
+		gap:4% ;
+    width: 85%;
     background-color: #0d1b2a;
-    padding: 5%;
+    padding: 2%;
     border-radius: 10px;
     color: #fff;
     box-shadow: 1px 1px 20px 5px #415a77;
 
   }
+	#services-container{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 5%;
+		padding: 3%;
+	}
 	input {
 		margin-top: 5px;
     padding: 8px;
@@ -31,11 +44,20 @@ export const FormForService = styled.div`
     font-weight: 700;
   }
   label {
+		width: 48%;
     display: flex;
     flex-direction: column;
+		
     font-size: 1.2em;
     
   } 
+	#description-label{
+		width: 85%;
+		height: 30%;
+	}
+	#description{
+		height: 100%;
+	}
   a{
     text-decoration: none;
     color: #778da9;
@@ -47,7 +69,9 @@ export const FormForService = styled.div`
     border-radius: 10px;
 
   }
-	.sign-button{
+	.create-service{
+		width: 100px;
+		height: 60px;
 		background-color: #778da9;
 		padding: 5px;
 		border-radius: 5px;
@@ -55,15 +79,10 @@ export const FormForService = styled.div`
 		border:none;
 		font-size: 1.2em;
 		color: #fff;
-		margin-top: 5px;
+		margin-top: 2%;
 	}
-	.sign-button:hover{
+	.create-service:hover{
 		background-color: #415a77;
 	}
-	.error{
-		color: red;
-		display: block;
-
-	}
-		    
+	
 `;

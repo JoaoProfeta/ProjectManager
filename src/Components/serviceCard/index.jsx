@@ -10,14 +10,19 @@ export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 	
 	return (
 		<CardForServices>
-			<h4>{name}</h4>
-			<p>
-				<span>total cost:</span>R${cost}
-			</p>
-			<p>
-				{description}
-			</p>
-			<div className="service_card_actions">
+			<h1> 
+				{name}
+			</h1>
+			<div className="services">
+				<span>Service Cost:</span>{cost}
+			</div>
+			<div className="services" id="description">
+				<span>Description:</span> 
+				<p>{description}</p>
+			</div>
+			
+			
+			<div className="services-button">
 				<button onClick={remove}>
 					<BsFillTrashFill/>
                     Excluir
