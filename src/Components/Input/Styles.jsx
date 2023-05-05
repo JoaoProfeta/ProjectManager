@@ -9,12 +9,18 @@ export const StyledInput = styled.div`
     font-weight: bold;
   }
   input {
-    padding: 0.7em;
-    border-radius: 0;
-    border: none;
+		margin-top: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    outline: 0;
+    border: 2px solid #415a77;
+    color: #222;
+    font-weight: 700;
   }
-  input::placeholder {
-    color: #7b7b7b;
-  }
+  
+	label{
+		text-align: start;
+		color: #e0e1dd;
+	}
 `;
 

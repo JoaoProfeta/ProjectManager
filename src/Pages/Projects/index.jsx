@@ -1,31 +1,34 @@
 import { useEffect, useState } from "react";
-
 import { Container } from "../../Components/Container";
 import { ProjectCard } from "../../Components/ProjectsCard";
 import { StyledProjects } from "./styles";
 
 export const Projects = () => {
 
+	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	const [ project, setProject ] = useState([]);
-	const [ unicIdentifier,setUnicIdentifier ] = useState();
-	const [ removeProjects,setRemoveProjects ] = useState([]);
 	useEffect(()=>{
 		const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
-
 		setProject(getUserLoggedIn.projects);
 	},[]);
-	const getUserLogged = JSON.parse(localStorage.getItem("loggedInUser"));
-
-	const getProjectsByUserLogged = getUserLogged.projects;
-
-
-
 	const deleteProjectCardSelected = (e)=>{
-		const removeItemById = getProjectsByUserLogged.filter((item)=> item.id !== e);
-		console.log(removeItemById);
-		
+		e.preventDefault;
+		const getProjectId = e.target.id; //armengue, nem mexa 
+		const selectProjects = loggedInUser.projects;
+		const filterProjectForDelete = selectProjects.filter((item)=> item.id !== getProjectId);
+		//remove project
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...loggedInUser, projects:filterProjectForDelete }));
 
+		//set loggedUser in user
+		const updateUser = JSON.parse(localStorage.getItem("loggedInUser"));
+		const usersCopied = JSON.parse(localStorage.getItem("users") || []);
+
+		const userFilter = usersCopied.filter((users) => users.email !== loggedInUser.email);
+
+		localStorage.setItem("users",JSON.stringify([ ...userFilter,updateUser ]));
+		window.location.reload();
 	};
+	
 	return (
 		<StyledProjects>
 			<div className="title_container">
@@ -44,6 +47,7 @@ export const Projects = () => {
           		budget={projects.budget}
           		category={projects.category}
         			key={projects.id}
+        			handleDelete={deleteProjectCardSelected}
 							
         		
           	/>

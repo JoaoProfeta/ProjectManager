@@ -12,6 +12,7 @@ export const StyledSelect = styled.div`
     padding: 0.7em;
     border-radius: 0;
     border: none;
+		border-radius: 10px;
   }
   
 `;

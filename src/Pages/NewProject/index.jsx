@@ -7,11 +7,11 @@ export function NewProject () {
 	return (
 		<StyledNewProject>
       	<h1>
-        	Criar Projeto
+        	Create a project
       	</h1>
 
       	<p>
-      		Crie seu projeto para depois adicionar seus serviços
+					Create your project and then add your services
 			  </p>
 
 			<ProjectForm />

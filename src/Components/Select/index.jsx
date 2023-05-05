@@ -18,13 +18,16 @@ export const Select = ({
 				onChange={handleOnChange}
 				value={value || ""}
 			>
+				<option>--</option>
 				{options.map((option) => (
-					<option
-						value={option.id}
-						key={option.id}
-					>
-						{option.name}
-					</option>
+					<>
+						<option
+							value={option.id}
+							key={option.id}
+						>
+							{option.name}
+						</option>
+					</>
 				))}
 			</select>
 		</StyledSelect>

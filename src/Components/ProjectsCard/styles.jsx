@@ -32,7 +32,8 @@ export const StyledProjectCard = styled.div`
 	button{
 		width:60px;
 		color: #fff;
-		padding: 10px 0 10px 0;
+		height: 35px;
+		padding: 2px;
 		border-style: none;
 		border-radius:5px;
 		background-color: #415a77;
@@ -45,6 +46,9 @@ export const StyledProjectCard = styled.div`
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
+	}
+	a{
+		width: 60px;
 	}
 	
 `;

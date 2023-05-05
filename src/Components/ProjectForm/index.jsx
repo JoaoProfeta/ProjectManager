@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
 import { Input } from "../Input";
 import { Select } from "../Select";
 import { Submit } from "../SubmitButton";
 import { StyledProjectForm } from "./styles";
-import { v4 as uuid } from "uuid";
 
 export function ProjectForm (){
 	const unicId = uuid();
@@ -91,34 +91,38 @@ export function ProjectForm (){
 	);
 	
 	return (
-		<StyledProjectForm onSubmit={handleSubmitForm}>
-			<Input
-    		handleOnChange={handleChange}
-				name="name"
-				placeholder="Insira o nome do projeto"
-				text="Nome do Projeto"
-				type="text"
-				value={projects.name || ""}
-			/>
+		<StyledProjectForm >
+			
+			<form action="" onSubmit={handleSubmitForm}>
+				<Input
+					handleOnChange={handleChange}
+					name="name"
+					placeholder="Name the project"
+					text="Nome do Projeto"
+					type="text"
+					value={projects.name || ""}
+					required
+				/>
+				<Input
+					handleOnChange={handleChange}
+					name="budget"
+					placeholder="Total budget"
+					text="Project budget"
+					type="number"
+					value={projects.budget || ""}
+					required
+				/>
+				<Select
+					name="category"
+					text="Select category"
+					options={categories}
+					handleOnChange={handleCategoryProjects}
+					value={selectedCategory}
+					
+				/>
+				<button>Create project</button>
+			</form>
 
-			<Input
-				handleOnChange={handleChange}
-				name="budget"
-				placeholder="Insira o orçamento total"
-				text="Orçamento do projeto"
-				type="number"
-				value={projects.budget || ""}
-			/>
-
-			<Select
-				name="category_id"
-				text="Selecione a categoria"
-				options={categories}
-				handleOnChange={handleCategoryProjects}
-				value={selectedCategory}
-			/>
-
-			<Submit text="Criar Projeto" />
 		</StyledProjectForm>
 	);
 

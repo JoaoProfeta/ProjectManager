@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useLocation } from "react-router-dom";
 import { v4 as uuId } from "uuid";
-import { FormForService } from "./styles";
 import { ServiceCard } from "../serviceCard";
+import { FormForService } from "./styles";
 export const ServiceForm = () => {
 	
 	const unicId= uuId();
 	const location = useLocation();
+
 	const getIdProjectSelected = location.state.userId;
+
 	const [ pickProjects, setPickProjects ] = useState([]);
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	const getProjectsLoggedUser = loggedInUser.projects;
