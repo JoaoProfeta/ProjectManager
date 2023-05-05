@@ -19,7 +19,7 @@ export const StyledProjectForm = styled.div`
 			box-shadow: 1px 1px 20px 5px #415a77;
 		}
 		button{
-			width:100%;
+			width: 100%;
 			height: 35px;
 			border-radius: 10px;
 			text-align: center;

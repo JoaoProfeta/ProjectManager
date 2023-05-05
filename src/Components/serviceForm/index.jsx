@@ -39,11 +39,23 @@ export const ServiceForm = () => {
 			...filterUserChangeProperties,
 			logged
 		]));
+		window.location.reload();
 	}
 	const userLogged = JSON.parse(localStorage.getItem("loggedInUser"));
 	const projectSelected = userLogged.projects.find((item)=> item.id === getIdProjectSelected);
+	const projectRest = userLogged.projects.filter((item)=> item.id !== getIdProjectSelected);
 	const servicesByProjectSelected = projectSelected.services;
-	console.log(servicesByProjectSelected);
+	
+	const deleteServices = (e)=>{
+		const getIdForDeleteService = e.target.id;
+		const filterServiceRest = servicesByProjectSelected.filter((service)=> service.id !== getIdForDeleteService);
+		const filterServiceForDelete = servicesByProjectSelected.find((service)=> service.id === getIdForDeleteService);
+		const updateProjectAfterServiceDelete = { ...projectSelected, services:filterServiceRest };
+		const updateProjects = [ ...projectRest, updateProjectAfterServiceDelete ];
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...userLogged, projects:updateProjects }));
+		
+		
+	};
 	return (
 		<FormForService >
 			<div id="services-container">
@@ -52,10 +64,12 @@ export const ServiceForm = () => {
 					servicesByProjectSelected.map((service)=>{
 						return(
 							<ServiceCard
+								id={service.id}
 								key={service.id || service.name}
 								name={service.name}
 								cost={service.cost}
 								description={service.description}
+								handleRemove={deleteServices}
 							/>
 				
 						);
@@ -96,7 +110,6 @@ export const ServiceForm = () => {
 				
 				<button
 					className="create-service"
-
 					type="submit"
 				>
 						Create service

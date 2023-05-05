@@ -53,7 +53,7 @@ export function ProjectForm (){
 
 	function handleSubmitForm (e) {
 		e.preventDefault();
-		const categoryFind = categories.find((c) => c.id == selectedCategory);
+		const categoryFind = categories.find((c) => c.name == selectedCategory);
 
 		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
 		

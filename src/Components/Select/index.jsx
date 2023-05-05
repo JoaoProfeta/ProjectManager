@@ -22,7 +22,7 @@ export const Select = ({
 				{options.map((option) => (
 					<>
 						<option
-							value={option.id}
+							value={option.name}
 							key={option.id}
 						>
 							{option.name}

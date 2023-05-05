@@ -3,13 +3,10 @@ import { CardForServices } from "./styles";
 
 export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 
-	const remove=(e)=>{
-		e.preventDefault();
-		handleRemove(id,cost);
-	};
+
 	
 	return (
-		<CardForServices>
+		<CardForServices id={id}>
 			<h1> 
 				{name}
 			</h1>
@@ -23,7 +20,7 @@ export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 			
 			
 			<div className="services-button">
-				<button onClick={remove}>
+				<button onClick={handleRemove} id={id}>
 					<BsFillTrashFill/>
                     Excluir
 				</button>
