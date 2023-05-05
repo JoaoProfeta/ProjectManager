@@ -1,16 +1,12 @@
-
-
 import { ServiceForm } from "../../Components/serviceForm";
-import { ServiceCard } from "../../Components/serviceCard";
-export const Services = ()=>{
 
+export const Services = ()=>{
 
 	return(
 		<>
+			<ServiceForm/>
 			
-			<ServiceForm >
-
-			</ServiceForm>
 		</>
 	);
+	
 };

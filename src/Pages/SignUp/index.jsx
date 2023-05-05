@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { signUpFormSchema } from "../../Components/validators/signUp";
 import { StyledSignUp } from "./styles";
-// eslint-disable-next-line no-unused-vars
 import bcrypt from "bcryptjs";
 
 export function CadastroPage() {
@@ -13,12 +12,9 @@ export function CadastroPage() {
 	const { register,formState : { errors }, handleSubmit } = useForm({
 		resolver: yupResolver(signUpFormSchema)
 	});
-
 	const handleOnSubmit=({ email,userName,password, id })=> {
-		
 
 		const projects = [];
-
 		id=uuid();
 		const getPassword = password;
 		const encryptPassword= (PasswordFind) => {
@@ -27,26 +23,16 @@ export function CadastroPage() {
 		};
 		const token = encryptPassword(getPassword);
 		console.log(token);
-
-		
-
-
-
-
 		const UserFindLocalStorage = { email,userName,token,id,projects };
-
 		const getUsers = JSON.parse(localStorage.getItem("users")) || []; 
-
 		const userAddInLocalStorage	= [ ...getUsers, UserFindLocalStorage ];
-
 		localStorage.setItem("users", JSON.stringify(userAddInLocalStorage));
+
 	};
 	const [ change,setChange ] = useState(false);
 	const onSubmit = () => {
 		setChange(false);
 	};
-
-
 
 	return (
 		<StyledSignUp>
@@ -126,7 +112,6 @@ export function CadastroPage() {
 				>
 					SignUp
 				</button>
-
 				<div>
 					Already have an account?
 					<Link to="/login">

@@ -35,14 +35,15 @@ export const ProjectEdit = () => {
 		setBudget(e.target.value);
 	};	
 	const saveChanges = (e)=>{
+
 		e.preventDefault();
 		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== location.state.id);
 		const filterProjectAppliesChange = getProjectsLoggedUser.find((project) => project.id === location.state.id);
 		console.log();
 		const projectAppliesChange = { ...filterProjectAppliesChange, name:name, budget:budget, category:category, id:location.state.id,  };
 		setPickProjects([ ...filterProjectsRest,projectAppliesChange ]);
+
 	};
-	
 	useEffect(()=>{
 		const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
 		localStorage.setItem("loggedInUser",JSON.stringify({ ...userLoggedIn,projects:pickProjects }));
@@ -81,9 +82,7 @@ export const ProjectEdit = () => {
 					options={categories}
 					handleOnChange={handleCategoryProjects}
 					value={category}
-
 				/>
-
 				<button onClick={saveChanges}>Save changes</button>
 			</form>
 		</EditCard>

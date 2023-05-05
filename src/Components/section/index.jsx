@@ -1,7 +1,5 @@
 import { StyledSection } from "./styles";
-
 import { LinkButton } from "../linkButtom";
-
 
 export function Section ({ textPromotional, imgProtional, alt, buttonExists }) {
 	return (

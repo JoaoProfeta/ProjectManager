@@ -14,7 +14,6 @@ import { PrivateRoutes } from "./privateRoutes";
 export const Routes=()=>{
 	
 	return (
-
 		<Router>
 			<NavBar />
 			<Container styleHeight={true}>

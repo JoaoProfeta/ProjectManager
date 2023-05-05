@@ -1,18 +1,11 @@
+import "./index.css";
 import { Routes } from "./routes/routes";
 
-import "./index.css";
-
-
-
-
-
-function App() {
+export const App=()=>{
 	
 	return (
-
 		<Routes/>
-		
 	);
-}
 
-export default App;
+};
+

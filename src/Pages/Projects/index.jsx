@@ -12,32 +12,25 @@ export const Projects = () => {
 		setProject(getUserLoggedIn.projects);
 	},[]);
 	const deleteProjectCardSelected = (e)=>{
+
 		e.preventDefault;
 		const getProjectId = e.target.id; //armengue, nem mexa 
 		const selectProjects = loggedInUser.projects;
 		const filterProjectForDelete = selectProjects.filter((item)=> item.id !== getProjectId);
-		//remove project
 		localStorage.setItem("loggedInUser",JSON.stringify({ ...loggedInUser, projects:filterProjectForDelete }));
-
-		//set loggedUser in user
 		const updateUser = JSON.parse(localStorage.getItem("loggedInUser"));
 		const usersCopied = JSON.parse(localStorage.getItem("users") || []);
-
 		const userFilter = usersCopied.filter((users) => users.email !== loggedInUser.email);
-
 		localStorage.setItem("users",JSON.stringify([ ...userFilter,updateUser ]));
 		window.location.reload();
+
 	};
-	
 	return (
 		<StyledProjects>
 			<div className="title_container">
 				<h1>My Projects</h1>
 			</div>
-			{/*message && <Message msg={message} type="success" />*/}
-			{/*projectMessage && <Message msg={projectMessage} type="success" />*/}
 			<Container start={true}>
-
 				{project.length > 0 &&
         project.map((projects) => {
         	return (
@@ -48,14 +41,10 @@ export const Projects = () => {
           		category={projects.category}
         			key={projects.id}
         			handleDelete={deleteProjectCardSelected}
-							
-        		
           	/>
         	);
         }
         )}
-
-
 			</Container>
 		</StyledProjects>
 	);

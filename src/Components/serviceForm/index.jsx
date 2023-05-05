@@ -13,13 +13,12 @@ export const ServiceForm = () => {
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	const getProjectsLoggedUser = loggedInUser.projects;
 	const { register,handleSubmit	} = useForm({});
-
 	useEffect(()=>{
 		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== getIdProjectSelected);		
 		setPickProjects([...filterProjectsRest]);		
 	},[]);
-
 	function submit({ name,cost,description }) {
+
 		console.log({ name,cost,description });
 		const filterUserForAddServices = getProjectsLoggedUser.find((project) => project.id === getIdProjectSelected);
 		const newService = { name,cost,description,id:unicId };
@@ -34,13 +33,12 @@ export const ServiceForm = () => {
 			logged
 		]));
 		window.location.reload();
-	}
 
+	}
 	const userLogged = JSON.parse(localStorage.getItem("loggedInUser"));
 	const projectSelected = userLogged.projects.find((item)=> item.id === getIdProjectSelected);
 	const projectRest = userLogged.projects.filter((item)=> item.id !== getIdProjectSelected);
 	const servicesByProjectSelected = projectSelected.services;
-	
 	const deleteServices = (e)=>{
 		const getIdForDeleteService = e.target.id;
 		const filterServiceRest = servicesByProjectSelected.filter((service)=> service.id !== getIdForDeleteService);
