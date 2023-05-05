@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const SubmitButton = styled.button`
@@ -13,4 +14,20 @@ export const SubmitButton = styled.button`
   button:hover {
     color: #ffbb33;
   }
+  ${(props) => props.disabled === true &&`
+     &:hover{
+      background-color:#222;
+      color:#ffff;
+      border:2px solid #1b263b;
+     }
+    `
+}
+  ${(props) => props.disabled === true &&`
+     &:hover{
+      background-color:#1b263b;
+      color:#ffff;
+      border:2px solid #778da9;
+     }
+    `
+}
 `;

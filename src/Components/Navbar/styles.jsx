@@ -1,10 +1,11 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledNav = styled.div`
     display: flex;
     justify-content: space-around;
     background-color:#0d1b2a;
     padding: 1em;
+		width: 100%;
         ul{
             display: flex;
             list-style: none;
@@ -18,25 +19,23 @@ export const StyledNav = styled.div`
         .logo{
             text-decoration: none;
             color: #fff;
-<<<<<<< HEAD:src/Components/Navbar/styles.jsx
             
         }
         .logo h1{
 
-=======
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/Layout/Navbar/styles.jsx
         }
         .link_style{
             text-decoration: none;
             color: #fff;
         }
         .link_style:hover{
-            color: #ffbb33;  
+            color: #778da9;
+            
         }
         .active{
             text-decoration: none;
-            border-bottom: solid 2px #ffbb33;
-            color: #ffbb33;
+            border-bottom: solid 2px #415a77;
+            color: #778da9;
             border-radius: 0 0 4px 4px;
         }
         .icon_exit{
@@ -47,4 +46,4 @@ export const StyledNav = styled.div`
         .icon_exit:hover{
             color: #ffbb33;
         }
-`  
+`;  

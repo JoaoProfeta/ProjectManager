@@ -1,219 +1,91 @@
+
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Input } from "../../Components/Input";
+import { ProjectCard } from "../../Components/ProjectsCard";
+import { Select } from "../../Components/Select";
 import { EditCard } from "./styles";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-<<<<<<< HEAD:src/Pages/ProjectEdit/index.jsx
-import { Loading } from "../../Components/Loading";
-import { Container } from "../../Components/Container";
-import { ProjectForm } from "../../Components/ProjectForm";
-import { Message } from "../../Components/Message";
-
-import { ServiceForm } from "../../Components/serviceForm";
-import { parse, v4 as uuidv4 } from "uuid";
-import { ServiceCard } from "../../Components/serviceCard";
-=======
-import { Loading } from "../Loading/Loading";
-import { Container } from "../Container/Container";
-import { ProjectForm } from "../ProjectForm/ProjectForm";
-import { Message } from "../Message/Message";
-import { ServiceForm } from "../service/ServiceForm";
-import { parse, v4 as uuidv4 } from "uuid";
-import { ServiceCard } from "../service/serviceCard/ServiceCard";
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectEdit/ProjectEdit.jsx
 export const ProjectEdit = () => {
-  const { id } = useParams();
-  const [edit, setEdit] = useState([]);
-  const [services, setServices] = useState([]);
-  const [showProjectForm, setShowProjectForm] = useState(false);
-  const [showServiceForm, setShowServiceForm] = useState(false);
-  const [message, setMessage] = useState();
-  const [type, setType] = useState();
+	const location = useLocation();
+	const [ name, setName ] = useState(location.state.name || "");
+	const [ budget, setBudget ] = useState(location.state.budget || "");
+	const [ category, setCategory ] = useState(location.state.category || 0);
+	const [ categories, setCategories ] = useState([]);
+	const [ pickProjects, setPickProjects ] = useState([]);
+	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+	const getProjectsLoggedUser = loggedInUser.projects;
+	const logged = !!loggedInUser;
+	useEffect(
+		() => {
+			setPickProjects(loggedInUser.projects);		
+			if (logged) {	
+				const getCategories = JSON.parse(localStorage.getItem("categories"));
+				setCategories(getCategories);
+			}
+		},
+		[]
+	);
+	const handleCategoryProjects = (e) => {
+		setCategory(e.target.value);
+	};
+	const handleOnChangeName = (e) => {
+		setName(e.target.value);
+	};
+	const handleOnChangeBudget = (e) => {
+		setBudget(e.target.value);
+	};	
+	const saveChanges = (e)=>{
+		e.preventDefault();
+		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== location.state.id);
+		const filterProjectAppliesChange = getProjectsLoggedUser.find((project) => project.id === location.state.id);
+		console.log();
+		const projectAppliesChange = { ...filterProjectAppliesChange, name:name, budget:budget, category:category, id:location.state.id,  };
+		setPickProjects([ ...filterProjectsRest,projectAppliesChange ]);
+	};
+	
+	useEffect(()=>{
+		const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...userLoggedIn,projects:pickProjects }));
+	},[saveChanges]);
+	
+	return (
+		<EditCard>
+			<ProjectCard
+				name={name}
+				budget={budget}
+				category={category}
+				disabled={true}
+			/>
+			<form action="" >
+				<Input
+					handleOnChange={handleOnChangeName}
+					name="name"
+					placeholder="Name the project"
+					text="Nome do Projeto"
+					type="text"
+					value={name}
+					required
+				/>
+				<Input
+					handleOnChange={handleOnChangeBudget}
+					name="budget"
+					placeholder="Total budget"
+					text="Project budget"
+					type="number"
+					value={budget}
+					required
+				/>
+				<Select
+					name="category"
+					text="Select category"
+					options={categories}
+					handleOnChange={handleCategoryProjects}
+					value={category}
 
-  useEffect(() => {
-    setTimeout(() => {
-      fetch(`http://localhost:5000/projects/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setEdit(data);
-          setServices(data.services);
-        })
-        .catch((err) => console.log(err));
-    }, 300);
-  }, [id]);
+				/>
 
-  function editPost(project) {
-    setMessage("");
-    if (project.budget < project.cost) {
-      setMessage("O Orçamento não pode ser menor que o custo do projeto!");
-
-      setType("error");
-
-      return false;
-    }
-
-    fetch(`http://localhost:5000/projects/${project.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(project),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setEdit(data);
-        setShowProjectForm(false);
-
-        setMessage("Projeto atualizado!");
-
-        setType("success");
-      })
-      .catch((err) => console.log(err));
-  }
-
-  function createService() {
-    setMessage("");
-    const lastService = edit.services[edit.services.length - 1];
-    lastService.id = uuidv4();
-
-    const lastServiceCost = lastService.cost;
-
-    const newCost = parseFloat(edit.cost) + parseFloat(lastServiceCost);
-
-    //maximum value validation
-    if (newCost > parseFloat(edit.budget)) {
-      setMessage("Orçamento Ultrapassado, verifique o valor do serviço");
-      setType("error");
-      edit.services.pop();
-      return false;
-    }
-
-    //add service cost to project total cost
-
-    edit.cost = newCost;
-    //update edit
-
-    fetch(`http://localhost:5000/projects/${edit.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(edit),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setServices(data.services);
-        setShowServiceForm(!showServiceForm);
-        setMessage("Serviço adicionado!");
-        setType("success");
-      })
-      .catch((err) => console.log(err));
-  }
-  function removeService(id, cost) {
-    const servicesUpdated = edit.services.filter(
-      (service) => service.id !== id
-    );
-
-    const projectUpdated = edit;
-
-    projectUpdated.services = servicesUpdated;
-    projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost);
-
-    fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(projectUpdated),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setEdit(projectUpdated);
-        setServices(servicesUpdated);
-        setMessage("Serviço removido com sucesso!");
-      });
-  }
-
-  const toggleProjectForm = () => {
-    setShowProjectForm(!showProjectForm);
-  };
-  const toggleServiceForm = () => {
-    setShowServiceForm(!showServiceForm);
-  };
-
-  return (
-    <EditCard>
-      {edit.name ? (
-        <div>
-          <Container column={true}>
-            {message && <Message type={type} msg={message} />}
-            <div className="datails_container">
-              <h1>Projetos: {edit.name}</h1>
-              <button onClick={toggleProjectForm}>
-                {!showProjectForm ? "Editar projeto" : "fechar"}
-              </button>
-              {!showProjectForm ? (
-                <div className="project_info">
-                  <p>
-                    <span>Categoria: </span>
-                    {edit.category.name}
-                  </p>
-                  <p>
-                    <span>total Orçamento: </span>R${edit.budget}
-                  </p>
-                  <p>
-                    <span>Total utilizado </span>R${edit.cost}
-                  </p>
-                </div>
-              ) : (
-                <div className="project_info">
-                  <ProjectForm
-                    handleSubmit={editPost}
-                    btnText="Concluir edição"
-                    projectData={edit}
-                  />
-                </div>
-              )}
-            </div>
-            <div className="service_form_container">
-              <h2>Adicione um serviço</h2>
-              <button onClick={toggleServiceForm}>
-                {!showServiceForm ? "Adicionar serviço" : "fechar"}
-              </button>
-              <div className="project_info">
-                {showServiceForm && (
-                  <ServiceForm
-                    handleSubmit={createService}
-                    textBtn="Adicionar Serviço"
-                    projectData={edit}
-                  />
-                )}
-              </div>
-            </div>
-
-            <h2>Serviços</h2>
-            <Container startStyle={true}>
-              {services.length > 0 &&
-                services.map((service) => (
-                  <ServiceCard
-                    id={service.id}
-                    name={service.name}
-                    cost={service.cost}
-                    description={service.description}
-                    key={service.id}
-                    handleRemove={removeService}
-                  />
-                ))}
-              {services.length === 0 && <p>Não há serviços cadastrados</p>}
-            </Container>
-          </Container>
-        </div>
-      ) : (
-        <Loading />
-      )}
-    </EditCard>
-  );
+				<button onClick={saveChanges}>Save changes</button>
+			</form>
+		</EditCard>
+	);
 };

@@ -1,34 +1,49 @@
-import { StyledSection } from "./styles"
+import { StyledSection } from "./styles";
 
-import { LinkButton } from "../linkButtom"
+import { LinkButton } from "../linkButtom";
 
 
-
-export const Section = ({textPromotional,imgProtional,alt, buttonExists})=>{
-
-    return(
-        <StyledSection >
-            <div>
-                {textPromotional}
-                <div className="divBtn">{buttonExists && <LinkButton to="/login" text="Start login"/>}</div>
-            </div>
-            <div>
-                <img src={imgProtional} alt={alt} />
-            </div>
-        </StyledSection>
-    )
+export function Section ({ textPromotional, imgProtional, alt, buttonExists }) {
+	return (
+		<StyledSection >
+			<div>
+				{textPromotional}
+				<div
+					className="divBtn"
+				>
+					{buttonExists
+						? <LinkButton
+							text="Start login"
+							to="/login"
+						  />
+						: null}
+				</div>
+			</div>
+			<div>
+				<img
+					alt={alt}
+					src={imgProtional}
+				/>
+			</div>
+		</StyledSection>
+	);
 }
 
-export const SectionTypeTwo = ({textPromotional,imgProtional,alt, buttonExists})=>{
+export function SectionTypeTwo ({ textPromotional, imgProtional, alt }) {
 
-    return(
-        <StyledSection>
-            <div>
-                <img src={imgProtional} alt={alt} />
-            </div>
-            <div>
-                {textPromotional}
-            </div>
-        </StyledSection>
-    )
+	return (
+		<StyledSection>
+			<div>
+				<img
+					alt={alt}
+					src={imgProtional}
+				/>
+			</div>
+
+			<div>
+				{textPromotional}
+			</div>
+		</StyledSection>
+	);
+
 }

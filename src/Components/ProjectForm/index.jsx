@@ -1,119 +1,129 @@
-import { useEffect, useState } from "react"
-<<<<<<< HEAD:src/Components/ProjectForm/index.jsx
-import { FormForProjects } from "./styles"
-import { Input } from "../Input"
-import { Select } from "../Select"
-import { Submit } from "../SubmitButton"
-=======
+import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
+import { Input } from "../Input";
+import { Select } from "../Select";
+import { Submit } from "../SubmitButton";
+import { StyledProjectForm } from "./styles";
+
+export function ProjectForm (){
+	const unicId = uuid();
+	const [	categories,setCategories ] = useState([]);
+	
+	const [ projects,setProjects	] = useState({});
+		
+	 const [ userProjects,setUserProjects ] = useState([]);
+		
+	 const [ selectedCategory,setSelectedCategory ] = useState(0);
+	
+	const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+	
+	const logged = !!userLoggedIn;
+	
+	useEffect(
+		() => {
+
+			if (logged) {
+
+				const getCategories = JSON.parse(localStorage.getItem("categories"));
+				
+				setCategories(getCategories);
+
+				const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
+			 	const getProjects = loggedInUser.projects || [];
+				setUserProjects(getProjects);
+				
+			}
+
+		},
+		[]
+	);
+	
+	function handleChange (e) {
+
+		setProjects({ ...projects, [e.target.name]: e.target.value });
+
+	}
+
+	const handleCategoryProjects =(e)=> {
+
+		setSelectedCategory(e.target.value);
 
 
-import { StyledProjectForm } from "./styles"
-import { Input } from "../Input/input"
-import { Select } from "../Select/Select"
+	};
 
-import { Button } from "../SubmitButton/SubmitButton"
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectForm/ProjectForm.jsx
+	function handleSubmitForm (e) {
+		e.preventDefault();
+		const categoryFind = categories.find((c) => c.name == selectedCategory);
 
+		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
+		
+		setUserProjects([
+			...userProjects,
+			newProject
+		]);
 
-export const ProjectForm = ({ handleSubmit, btnText, projectData }) => {
-    const [categories, setCategories] = useState([]);
-    const [projects, setProjects] = useState({});
-    const [userProjects, setUserProjects] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(0)
+	}
 
-    const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"))
+	useEffect(
+		() => {
 
-    const logged = !!userLoggedIn
+			if (logged) {
 
-    useEffect(() => {
+				const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-        if (logged) {
-            const getCategories = JSON.parse(localStorage.getItem("categories"));
-            setCategories(getCategories);
+				const updatedUser = { ...loggedInUser, projects: userProjects };
 
-            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-            const projects = loggedInUser.projects || [];
-            setUserProjects(projects);
-        }
+				localStorage.setItem(
+					"loggedInUser",
+					JSON.stringify(updatedUser)
+				);
 
-    }, [])
+				const usersCopied = JSON.parse(localStorage.getItem("users") || []);
 
-    function handleChange(e) {
+				const userFiltrado = usersCopied.find((user) => user.email != userLoggedIn.email);
 
-        setProjects({ ...projects, [e.target.name]: e.target.value });
+				localStorage.setItem("users",JSON.stringify([ userFiltrado,updatedUser ]));
 
-    }
+			}
 
-    function handleCategoryProjects(e) {
+		},
+		[userProjects]
+	);
+	
+	return (
+		<StyledProjectForm >
+			
+			<form action="" onSubmit={handleSubmitForm}>
+				<Input
+					handleOnChange={handleChange}
+					name="name"
+					placeholder="Name the project"
+					text="Nome do Projeto"
+					type="text"
+					value={projects.name || ""}
+					required
+				/>
+				<Input
+					handleOnChange={handleChange}
+					name="budget"
+					placeholder="Total budget"
+					text="Project budget"
+					type="number"
+					value={projects.budget || ""}
+					required
+				/>
+				<Select
+					name="category"
+					text="Select category"
+					options={categories}
+					handleOnChange={handleCategoryProjects}
+					value={selectedCategory}
+					
+				/>
+				<button>Create project</button>
+			</form>
 
-        setSelectedCategory(e.target.value)
+		</StyledProjectForm>
+	);
 
-    }
-
-    function handleSubmitForm(e) {
-
-        const categoryFind = categories.find(c => c.id == selectedCategory);
-
-        const newProject = { name: projects.name, budget: projects.budget, id: projects.id, category: categoryFind.name };
-
-        setUserProjects([...userProjects, newProject]);
-
-    }
-
-    useEffect(() => {
-
-        if (logged) {
-
-            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-            const updatedUser = { ...loggedInUser, projects: userProjects };
-
-            localStorage.setItem('loggedInUser', JSON.stringify(updatedUser));
-
-            const usersCopied = JSON.parse(localStorage.getItem('users') || []);
-
-            const userFiltrado = usersCopied.find(user => user.email != userLoggedIn.email)
-
-            localStorage.setItem('users', JSON.stringify([userFiltrado, updatedUser]))
-
-        }
-
-    }, [userProjects]);
-
-    return (
-        <StyledProjectForm onSubmit={handleSubmitForm}>
-            <Input
-                type="text"
-                text="Nome do Projeto"
-                name="name"
-                placeholder="Insira o nome do projeto"
-                handleOnChange={handleChange}
-                value={projects.name || ""}
-            />
-
-            <Input
-                type="number"
-                text="Orçamento do projeto"
-                name="budget"
-                placeholder="Insira o orçamento total"
-                handleOnChange={handleChange}
-                value={projects.budget || ""}
-            />
-
-            <Select
-                name="category_id"
-                text="Selecione a categoria"
-                options={categories}
-                handleOnChange={handleCStyledProjectForm}
-                value={selectedCategory}
-            />
-
-<<<<<<< HEAD:src/Components/ProjectForm/index.jsx
-            <Submit text="Criar Projeto" />
-        </FormForProjects>
-=======
-            <Button text={btnText} />
-        </StyledProjectForm>
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/ProjectForm/ProjectForm.jsx
-    );
 }

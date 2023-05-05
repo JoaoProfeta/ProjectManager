@@ -1,28 +1,30 @@
 import { BsFillTrashFill } from "react-icons/bs";
 import { CardForServices } from "./styles";
 
+export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 
-export const ServiceCard = ({ id,name,cost,description, handleRemove})=>{
-    const remove=(e)=>{
-        e.preventDefault()
-        handleRemove(id,cost)
-    }
 
-    return (
-        <CardForServices>
-            <h4>{name}</h4>
-            <p>
-                <span>Custo total:</span>R${cost}
-            </p>
-            <p>
-                {description}
-            </p>
-            <div className="service_card_actions">
-                <button onClick={remove}>
-                    <BsFillTrashFill/>
+	
+	return (
+		<CardForServices id={id}>
+			<h1> 
+				{name}
+			</h1>
+			<div className="services">
+				<span>Service Cost:</span>{cost}
+			</div>
+			<div className="services" id="description">
+				<span>Description:</span> 
+				<p>{description}</p>
+			</div>
+			
+			
+			<div className="services-button">
+				<button onClick={handleRemove} id={id}>
+					<BsFillTrashFill/>
                     Excluir
-                </button>
-            </div>
-        </CardForServices>
-    )
-}
+				</button>
+			</div>
+		</CardForServices>
+	);
+};

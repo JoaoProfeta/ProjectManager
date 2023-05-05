@@ -1,56 +1,62 @@
-import { ProjectPage } from "./styles";
-import { Message } from "../../Components/Message";
+import { useEffect, useState } from "react";
 import { Container } from "../../Components/Container";
-import { LinkButton } from "../../Components/linkButtom";
-import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-
-import { CardTeste } from "./cardTest";
-import { Submit } from "../../Components/SubmitButton";
+import { ProjectCard } from "../../Components/ProjectsCard";
+import { StyledProjects } from "./styles";
 
 export const Projects = () => {
-  
-  const [project, setProject] = useState([]);
 
-  
+	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+	const [ project, setProject ] = useState([]);
+	useEffect(()=>{
+		const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+		setProject(getUserLoggedIn.projects);
+	},[]);
+	const deleteProjectCardSelected = (e)=>{
+		e.preventDefault;
+		const getProjectId = e.target.id; //armengue, nem mexa 
+		const selectProjects = loggedInUser.projects;
+		const filterProjectForDelete = selectProjects.filter((item)=> item.id !== getProjectId);
+		//remove project
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...loggedInUser, projects:filterProjectForDelete }));
 
-  useEffect(()=>{
-    const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
+		//set loggedUser in user
+		const updateUser = JSON.parse(localStorage.getItem("loggedInUser"));
+		const usersCopied = JSON.parse(localStorage.getItem("users") || []);
 
-  setProject(getUserLoggedIn.projects)
-  },[])
-  
- 
+		const userFilter = usersCopied.filter((users) => users.email !== loggedInUser.email);
 
-  return (
-    <ProjectPage>
-      <div className="title_container">
-        <h1>Meus projetos</h1>
+		localStorage.setItem("users",JSON.stringify([ ...userFilter,updateUser ]));
+		window.location.reload();
+	};
+	
+	return (
+		<StyledProjects>
+			<div className="title_container">
+				<h1>My Projects</h1>
+			</div>
+			{/*message && <Message msg={message} type="success" />*/}
+			{/*projectMessage && <Message msg={projectMessage} type="success" />*/}
+			<Container start={true}>
 
-        <LinkButton to="/newproject" text="Criar Projeto" />
-      </div>
-      {/*message && <Message msg={message} type="success" />*/}
-      {/*projectMessage && <Message msg={projectMessage} type="success" />*/}
-      <Container startStyle={true}>
-
-        {project.length > 0 &&
-          project.map((projects) => {
-            return (
-              <CardTeste
-                name={projects.name}
-                id={projects.id}
-                budget={projects.budget}
-                key={projects.id}
-                category={projects.category}
-                
-              />
-            )
-          }
-          )}
+				{project.length > 0 &&
+        project.map((projects) => {
+        	return (
+          	<ProjectCard
+          		name={projects.name}
+          		id={projects.id}
+          		budget={projects.budget}
+          		category={projects.category}
+        			key={projects.id}
+        			handleDelete={deleteProjectCardSelected}
+							
+        		
+          	/>
+        	);
+        }
+        )}
 
 
-      </Container>
-      <Submit text="apagar"/>
-    </ProjectPage>
-  );
+			</Container>
+		</StyledProjects>
+	);
 };

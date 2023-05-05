@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 
 export const StyledSection = styled.section`  
@@ -19,5 +19,9 @@ export const StyledSection = styled.section`
     img{
         max-width: 400px;
     }
+		a{
+			background-color: #778da9;
+		}
    
-`
+`;
+

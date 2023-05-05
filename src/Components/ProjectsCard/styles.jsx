@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const CardForServices = styled.div`
-  width: 220px;
+
+export const StyledProjectCard = styled.div`
+	width: 220px;
 	height: 250px;
 	background-color: #e0e1dd;
 	border-radius: 10px;
@@ -10,6 +11,7 @@ export const CardForServices = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	margin-bottom:3%;
+	
 	h1{
 		color: #415a77;
 		text-align: center;
@@ -17,40 +19,39 @@ export const CardForServices = styled.div`
 		padding: 5px 0;
 		font-size:1.5em;
 	}
-	.services{
+	.projects{
 		font-size: 1em;
 		color: #415a77;
 		border-bottom: 1px solid #415a77;
-		padding: 5px 5px;
-		margin: 4% 0;
+		padding: 5px 0;
 	}
-	.services span{
+	.projects span{
 		font-size: 1.2em;
 		color: #1b263b;
 		font-weight: 600;
 	}
-	#description{
-		text-align: center;
-		border: none;
-	}
-  .services-button{
-		width: 100%;
-   	margin-top: 1.2em;
-  	display: flex;
-		justify-content: center;
-    align-items: center;   
-  }
 	button{
-		width: 90%;
-		height: 35px;
-		border-radius: 10px;
-		text-align: center;
+		width:60px;
 		color: #fff;
-		background-color: #778da9;
-		border: 1px solid #415a77;
-		cursor:pointer;
+		height: 35px;
+		padding: 2px;
+		border-style: none;
+		border-radius:5px;
+		background-color: #415a77;
+		cursor: pointer;
+		
 	}
 	button:hover{
 		background-color: #1b263b;
 	}
+	.buttons-container{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	a{
+		width: 60px;
+	}
+	
+
 `;

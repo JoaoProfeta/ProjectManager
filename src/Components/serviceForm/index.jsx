@@ -1,53 +1,120 @@
-import { FormForService } from "./styles"
-import { useState } from "react"
-<<<<<<< HEAD:src/Components/serviceForm/index.jsx
-import { Input } from "../Input"
-import { Submit } from "../SubmitButton"
-=======
-import { Input } from "../Input/input"
-import { Button } from "../SubmitButton/SubmitButton"
->>>>>>> 212c14aee212a4a5530e764be8ff67207f316959:src/Components/service/ServiceForm.jsx
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useLocation } from "react-router-dom";
+import { v4 as uuId } from "uuid";
+import { ServiceCard } from "../serviceCard";
+import { FormForService } from "./styles";
+export const ServiceForm = () => {
+	
+	const unicId= uuId();
+	const location = useLocation();
 
-export const ServiceForm = ({ handleSubmit, textBtn, projectData }) => {
+	const getIdProjectSelected = location.state.userId;
 
-    const [service, setService] = useState({})
+	const [ pickProjects, setPickProjects ] = useState([]);
+	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+	const getProjectsLoggedUser = loggedInUser.projects;
+	const { register,handleSubmit	} = useForm({});
 
-    function submit(e) {
-        e.preventDefault()
-        projectData.services.push(service)
-        handleSubmit(projectData)
-    }
-    function handleChange(e) {
-        setService({ ...service, [e.target.name]: e.target.value })
-    }
-    return (
-        <FormForService onSubmit={submit}>
+	useEffect(()=>{
+		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== getIdProjectSelected);		
+		setPickProjects([...filterProjectsRest]);		
 
-            <Input
-                type="text"
-                text="Nome do Serviço"
-                name="name"
-                placeholder="Insira o nome do serviço"
-                handleOnChange={handleChange}
-            />
-            <Input
-                type="number"
-                text="Custo do serviço"
-                name="cost"
-                placeholder="Insira o valor total"
-                handleOnChange={handleChange}
-            />
-            <Input
-                type="text"
-                text="Descrição do serviço"
-                name="description"
-                placeholder="escreva o serviço"
-                handleOnChange={handleChange}
-            />
-            <Button
-                className="btn"
-                text={textBtn}
-                onClick={submit} />
-        </FormForService>
-    )
-}
+	},[]);
+	
+	function submit({ name,cost,description }) {
+
+		console.log({ name,cost,description });
+
+		const filterUserForAddServices = getProjectsLoggedUser.find((project) => project.id === getIdProjectSelected);
+		const newService = { name,cost,description,id:unicId };
+		const newProjectWithServicesAdd = { ...filterUserForAddServices, services:[ ...filterUserForAddServices.services,newService ]};
+		const reenderProjects =[ ...pickProjects,newProjectWithServicesAdd ];
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...loggedInUser,projects: reenderProjects }));
+
+		const logged = JSON.parse(localStorage.getItem("loggedInUser"));
+		const getUsersLocalStorage = JSON.parse(localStorage.getItem("users") || []);
+		const filterUserChangeProperties = getUsersLocalStorage.filter((user)=> user.id !== logged.id);
+		localStorage.setItem("users", JSON.stringify([
+			...filterUserChangeProperties,
+			logged
+		]));
+		window.location.reload();
+	}
+	const userLogged = JSON.parse(localStorage.getItem("loggedInUser"));
+	const projectSelected = userLogged.projects.find((item)=> item.id === getIdProjectSelected);
+	const projectRest = userLogged.projects.filter((item)=> item.id !== getIdProjectSelected);
+	const servicesByProjectSelected = projectSelected.services;
+	
+	const deleteServices = (e)=>{
+		const getIdForDeleteService = e.target.id;
+		const filterServiceRest = servicesByProjectSelected.filter((service)=> service.id !== getIdForDeleteService);
+		const filterServiceForDelete = servicesByProjectSelected.find((service)=> service.id === getIdForDeleteService);
+		const updateProjectAfterServiceDelete = { ...projectSelected, services:filterServiceRest };
+		const updateProjects = [ ...projectRest, updateProjectAfterServiceDelete ];
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...userLogged, projects:updateProjects }));
+		
+		
+	};
+	return (
+		<FormForService >
+			<div id="services-container">
+				
+				{!!servicesByProjectSelected &&
+					servicesByProjectSelected.map((service)=>{
+						return(
+							<ServiceCard
+								id={service.id}
+								key={service.id || service.name}
+								name={service.name}
+								cost={service.cost}
+								description={service.description}
+								handleRemove={deleteServices}
+							/>
+				
+						);
+					})
+				}
+			</div>
+			<form onSubmit={handleSubmit(submit)}>
+				<label htmlFor="name">
+					Name
+					<input
+						id="name"
+						name="name"
+						{...register("name")}
+					/>
+				</label>
+				
+				<label htmlFor="Cost">
+					Cost
+					<input
+						id="cost"
+						name="cost"
+						{...register("cost")}
+					
+						type="text"
+					/>
+				</label>
+				
+				<label htmlFor="Description" id="description-label">
+					Description
+					<input
+						id="description"
+						name="description"
+						size=""
+						{...register("description")}
+						type="text"
+					/>
+				</label>
+				
+				<button
+					className="create-service"
+					type="submit"
+				>
+						Create service
+				</button>
+			</form>
+		</FormForService>
+	);
+};

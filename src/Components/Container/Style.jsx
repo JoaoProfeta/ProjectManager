@@ -1,23 +1,26 @@
-import styled from "styled-components";
+import styled,{css} from "styled-components";
 
 export const StyledContainer = styled.div`
-  width: 1200px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 0 auto;
   flex-wrap: wrap;
 
   ${
-    ({ styleHeight }) =>
-      styleHeight &&
+	({ styleHeight }) =>
+		styleHeight &&
       `
         min-height: 75%;`
-    //destruction pt exposed 2 >>>>
-  };
-  ${({ start }) => start && `justify-content:flex-start;`};
+	//destruction pt exposed 2 >>>>
+};
+  ${({ start }) => start && css`justify-content:flex-start;
+		gap: 3%;
+		flex-wrap: wrap;
+		`};
 
   ${({ column }) =>
-    column &&
+		column &&
     `justify-content:flex-start;
         flex-direction:column;
         `};
