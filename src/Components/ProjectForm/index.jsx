@@ -13,13 +13,25 @@ export function ProjectForm (){
 	const [ selectedCategory,setSelectedCategory ] = useState(0);
 	const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
 	const logged = !!userLoggedIn;
-	const notify = () => {
-		toast.success("Project created successfully!!!", {
-			position: "top-right",
+	const notifySucess = () => {
+		toast.success("Project Deleted successfully!!!", {
+			position: "top-left",
 			autoClose: 2000,
 			hideProgressBar: false,
 			closeOnClick: true,
-			pauseOnHover: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
+	const notifyErr = () => {
+		toast.error("Project deleted error!!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: false,
 			draggable: true,
 			progress: undefined,
 			theme: "light",
@@ -44,12 +56,17 @@ export function ProjectForm (){
 		setSelectedCategory(e.target.value);
 	};
 	function handleSubmitForm (e){
-
 		e.preventDefault();
-		const categoryFind = categories.find((c) => c.name == selectedCategory);
+		try{
+			notifySucess();
+			const categoryFind = categories.find((c) => c.name == selectedCategory);
 		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
-		setUserProjects([ ...userProjects,newProject ]);
-		notify;
+			setUserProjects([ ...userProjects,newProject ]);
+			
+		} catch (err) {
+			notifyErr();
+		}
+
 	}
 	useEffect(
 		() => {
@@ -94,21 +111,19 @@ export function ProjectForm (){
 					value={selectedCategory}		
 				/>
 				<ToastContainer
-					position="top-right"
+					position="top-left"
 					autoClose={2000}
 					hideProgressBar={false}
 					newestOnTop={false}
 					closeOnClick
 					rtl={false}
-					pauseOnFocusLoss
+					pauseOnFocusLoss={false}
 					draggable
-					pauseOnHover
+					pauseOnHover={false}
 					theme="light"
+					role="alert"
 				/>
-				<button onClick={notify} className="button-create">Create project</button>
-				{/* Same as */}
-				<ToastContainer />
-				
+				<button className="button-create">Create project</button>
 			</form>
 		</StyledProjectForm>
 	);

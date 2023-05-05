@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { Input } from "../../Components/Input";
 import { ProjectCard } from "../../Components/ProjectsCard";
 import { Select } from "../../Components/Select";
@@ -15,6 +16,30 @@ export const ProjectEdit = () => {
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	const getProjectsLoggedUser = loggedInUser.projects;
 	const logged = !!loggedInUser;
+	const notifySucess = () => {
+		toast.success("Service Update successfully!!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
+	const notifyErr = () => {
+		toast.error("Service Update error!!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
 	useEffect(
 		() => {
 			setPickProjects(loggedInUser.projects);		
@@ -25,6 +50,7 @@ export const ProjectEdit = () => {
 		},
 		[]
 	);
+
 	const handleCategoryProjects = (e) => {
 		setCategory(e.target.value);
 	};
@@ -35,14 +61,17 @@ export const ProjectEdit = () => {
 		setBudget(e.target.value);
 	};	
 	const saveChanges = (e)=>{
-
-		e.preventDefault();
-		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== location.state.id);
-		const filterProjectAppliesChange = getProjectsLoggedUser.find((project) => project.id === location.state.id);
-		console.log();
-		const projectAppliesChange = { ...filterProjectAppliesChange, name:name, budget:budget, category:category, id:location.state.id,  };
-		setPickProjects([ ...filterProjectsRest,projectAppliesChange ]);
-
+		try{
+			notifySucess();
+			e.preventDefault();
+			const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== location.state.id);
+			const filterProjectAppliesChange = getProjectsLoggedUser.find((project) => project.id === location.state.id);
+			console.log();
+			const projectAppliesChange = { ...filterProjectAppliesChange, name:name, budget:budget, category:category, id:location.state.id,  };
+			setPickProjects([ ...filterProjectsRest,projectAppliesChange ]);
+		}catch(error){
+			notifyErr();
+		}
 	};
 	useEffect(()=>{
 		const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -83,8 +112,21 @@ export const ProjectEdit = () => {
 					handleOnChange={handleCategoryProjects}
 					value={category}
 				/>
-				<button onClick={saveChanges}>Save changes</button>
+				<button className="button-save-change"onClick={saveChanges}>Save changes</button>
 			</form>
+			<ToastContainer
+				position="top-left"
+				autoClose={2000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable
+				pauseOnHover={false}
+				theme="light"
+				role="alert"
+			/>
 		</EditCard>
 	);
 };
