@@ -5,12 +5,10 @@ import { v4 as uuId } from "uuid";
 import { ServiceCard } from "../serviceCard";
 import { FormForService } from "./styles";
 export const ServiceForm = () => {
-	
+
 	const unicId= uuId();
 	const location = useLocation();
-
 	const getIdProjectSelected = location.state.userId;
-
 	const [ pickProjects, setPickProjects ] = useState([]);
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	const getProjectsLoggedUser = loggedInUser.projects;
@@ -19,19 +17,15 @@ export const ServiceForm = () => {
 	useEffect(()=>{
 		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== getIdProjectSelected);		
 		setPickProjects([...filterProjectsRest]);		
-
 	},[]);
-	
+
 	function submit({ name,cost,description }) {
-
 		console.log({ name,cost,description });
-
 		const filterUserForAddServices = getProjectsLoggedUser.find((project) => project.id === getIdProjectSelected);
 		const newService = { name,cost,description,id:unicId };
 		const newProjectWithServicesAdd = { ...filterUserForAddServices, services:[ ...filterUserForAddServices.services,newService ]};
 		const reenderProjects =[ ...pickProjects,newProjectWithServicesAdd ];
 		localStorage.setItem("loggedInUser",JSON.stringify({ ...loggedInUser,projects: reenderProjects }));
-
 		const logged = JSON.parse(localStorage.getItem("loggedInUser"));
 		const getUsersLocalStorage = JSON.parse(localStorage.getItem("users") || []);
 		const filterUserChangeProperties = getUsersLocalStorage.filter((user)=> user.id !== logged.id);
@@ -41,6 +35,7 @@ export const ServiceForm = () => {
 		]));
 		window.location.reload();
 	}
+
 	const userLogged = JSON.parse(localStorage.getItem("loggedInUser"));
 	const projectSelected = userLogged.projects.find((item)=> item.id === getIdProjectSelected);
 	const projectRest = userLogged.projects.filter((item)=> item.id !== getIdProjectSelected);
@@ -52,14 +47,11 @@ export const ServiceForm = () => {
 		const filterServiceForDelete = servicesByProjectSelected.find((service)=> service.id === getIdForDeleteService);
 		const updateProjectAfterServiceDelete = { ...projectSelected, services:filterServiceRest };
 		const updateProjects = [ ...projectRest, updateProjectAfterServiceDelete ];
-		localStorage.setItem("loggedInUser",JSON.stringify({ ...userLogged, projects:updateProjects }));
-		
-		
+		localStorage.setItem("loggedInUser",JSON.stringify({ ...userLogged, projects:updateProjects }));	
 	};
 	return (
 		<FormForService >
 			<div id="services-container">
-				
 				{!!servicesByProjectSelected &&
 					servicesByProjectSelected.map((service)=>{
 						return(
@@ -71,7 +63,6 @@ export const ServiceForm = () => {
 								description={service.description}
 								handleRemove={deleteServices}
 							/>
-				
 						);
 					})
 				}
@@ -85,7 +76,6 @@ export const ServiceForm = () => {
 						{...register("name")}
 					/>
 				</label>
-				
 				<label htmlFor="Cost">
 					Cost
 					<input
@@ -96,7 +86,6 @@ export const ServiceForm = () => {
 						type="text"
 					/>
 				</label>
-				
 				<label htmlFor="Description" id="description-label">
 					Description
 					<input
@@ -106,8 +95,7 @@ export const ServiceForm = () => {
 						{...register("description")}
 						type="text"
 					/>
-				</label>
-				
+				</label>				
 				<button
 					className="create-service"
 					type="submit"

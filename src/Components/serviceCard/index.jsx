@@ -3,8 +3,6 @@ import { CardForServices } from "./styles";
 
 export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 
-
-	
 	return (
 		<CardForServices id={id}>
 			<h1> 
@@ -17,8 +15,6 @@ export const ServiceCard = ({ id,name,cost,description, handleRemove })=>{
 				<span>Description:</span> 
 				<p>{description}</p>
 			</div>
-			
-			
 			<div className="services-button">
 				<button onClick={handleRemove} id={id}>
 					<BsFillTrashFill/>
