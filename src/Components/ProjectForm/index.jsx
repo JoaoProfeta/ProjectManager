@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuid } from "uuid";
 import { Input } from "../Input";
 import { Select } from "../Select";
 import { StyledProjectForm } from "./styles";
-
 export function ProjectForm (){
 	const unicId = uuid();
 	const [	categories,setCategories ] = useState([]);
@@ -12,6 +13,18 @@ export function ProjectForm (){
 	const [ selectedCategory,setSelectedCategory ] = useState(0);
 	const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
 	const logged = !!userLoggedIn;
+	const notify = () => {
+		toast.success("Project created successfully!!!", {
+			position: "top-right",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
 	useEffect(
 		() => {
 			if (logged) {
@@ -36,6 +49,7 @@ export function ProjectForm (){
 		const categoryFind = categories.find((c) => c.name == selectedCategory);
 		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
 		setUserProjects([ ...userProjects,newProject ]);
+		notify;
 	}
 	useEffect(
 		() => {
@@ -52,6 +66,7 @@ export function ProjectForm (){
 	);
 	return (
 		<StyledProjectForm >
+			
 			<form action="" onSubmit={handleSubmitForm}>
 				<Input
 					handleOnChange={handleChange}
@@ -78,7 +93,22 @@ export function ProjectForm (){
 					handleOnChange={handleCategoryProjects}
 					value={selectedCategory}		
 				/>
-				<button>Create project</button>
+				<ToastContainer
+					position="top-right"
+					autoClose={2000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="light"
+				/>
+				<button onClick={notify} className="button-create">Create project</button>
+				{/* Same as */}
+				<ToastContainer />
+				
 			</form>
 		</StyledProjectForm>
 	);
