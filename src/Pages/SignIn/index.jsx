@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { signInFormSchema } from "../../Components/validators/signIn";
+import { signInFormSchema } from "../../services/validators/signIn";
 import { StyledSign } from "./styles";
 export function LoginPage () {
 	const navigate = useNavigate();

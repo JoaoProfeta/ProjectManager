@@ -90,8 +90,8 @@ export const ProjectEdit = () => {
 				<Input
 					handleOnChange={handleOnChangeName}
 					name="name"
-					placeholder="Name the project"
-					text="Nome do Projeto"
+					placeholder="Project Name"
+					text="Project Name"
 					type="text"
 					value={name}
 					required
@@ -99,7 +99,7 @@ export const ProjectEdit = () => {
 				<Input
 					handleOnChange={handleOnChangeBudget}
 					name="budget"
-					placeholder="Total budget"
+					placeholder="Project budget"
 					text="Project budget"
 					type="number"
 					value={budget}

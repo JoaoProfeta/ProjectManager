@@ -1,7 +1,7 @@
 import { StyledSection } from "./styles";
-import { LinkButton } from "../linkButtom";
 
-export function Section ({ textPromotional, imgProtional, alt, buttonExists }) {
+
+export function Section ({ textPromotional, imgProtional, alt, }) {
 	return (
 		<StyledSection >
 			<div>
@@ -9,12 +9,6 @@ export function Section ({ textPromotional, imgProtional, alt, buttonExists }) {
 				<div
 					className="divBtn"
 				>
-					{buttonExists
-						? <LinkButton
-							text="Start login"
-							to="/login"
-						  />
-						: null}
 				</div>
 			</div>
 			<div>

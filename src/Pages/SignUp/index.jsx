@@ -1,11 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import bcrypt from "bcryptjs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
-import { signUpFormSchema } from "../../Components/validators/signUp";
+import { signUpFormSchema } from "../../services/validators/signUp";
 import { StyledSignUp } from "./styles";
-import bcrypt from "bcryptjs";
 
 export function CadastroPage() {
 	
