@@ -12,6 +12,7 @@ export const StyledNav = styled.div`
     align-items: center;
     justify-content: space-around;
     flex-direction: row;
+		padding: 1%;
   }
   li{
     margin-right: 1em;
@@ -19,6 +20,7 @@ export const StyledNav = styled.div`
   .logo{
     text-decoration: none;
     color: #fff;    
+		padding: 1%;
   }
   .link_style{
     text-decoration: none;
@@ -42,4 +44,10 @@ export const StyledNav = styled.div`
   .icon-exit:hover{
     color: #415a77;
   }
+	@media (max-width:521px){
+	
+		ul{
+			margin:2% 0;
+		}
+	}
 `;  

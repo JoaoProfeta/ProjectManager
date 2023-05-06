@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { Container } from "../../Components/Container";
 import { ProjectCard } from "../../Components/ProjectsCard";
-import { StyledProjects } from "./styles";
+import { StyledProjects, TitleContainer } from "./styles";
 export const Projects = () => {
 
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -57,11 +56,13 @@ export const Projects = () => {
 
 	};
 	return (
-		<StyledProjects>
-			<div className="title_container">
+		<>
+			<TitleContainer>
 				<h1>My Projects</h1>
-			</div>
-			<Container start={true}>
+			</TitleContainer>
+			<StyledProjects>
+			
+			
 				{project.length > 0 &&
         project.map((projects) => {
         	return (
@@ -91,7 +92,8 @@ export const Projects = () => {
 					theme="light"
 					role="alert"
 				/>
-			</Container>
-		</StyledProjects>
+		
+			</StyledProjects>
+		</>
 	);
 };

@@ -1,17 +1,13 @@
 import { StyledSection } from "./styles";
 
 
-export function Section ({ textPromotional, imgProtional, alt, }) {
+export function Section ({ orderSt,orderSt2,textPromotional, imgProtional, alt, }) {
 	return (
 		<StyledSection >
-			<div>
+			<div style={{ order:orderSt }} className="add-order-1">
 				{textPromotional}
-				<div
-					className="divBtn"
-				>
-				</div>
 			</div>
-			<div>
+			<div style={{ order:orderSt2 }} className="add-order-2">
 				<img
 					alt={alt}
 					src={imgProtional}
@@ -21,21 +17,5 @@ export function Section ({ textPromotional, imgProtional, alt, }) {
 	);
 }
 
-export function SectionTypeTwo ({ textPromotional, imgProtional, alt }) {
 
-	return (
-		<StyledSection>
-			<div>
-				<img
-					alt={alt}
-					src={imgProtional}
-				/>
-			</div>
 
-			<div>
-				{textPromotional}
-			</div>
-		</StyledSection>
-	);
-
-}

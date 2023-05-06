@@ -11,7 +11,6 @@ export const StyledProjectCard = styled.div`
 	flex-direction: column;
 	justify-content: space-around;
 	margin-bottom:3%;
-	
 	h1{
 		color: #415a77;
 		text-align: center;
@@ -51,6 +50,10 @@ export const StyledProjectCard = styled.div`
 	}
 	a{
 		width: 60px;
+	}
+
+	@media () {
+		
 	}
 	
 

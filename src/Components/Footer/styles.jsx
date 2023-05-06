@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
+	width: 100%;
   background-color: #0d1b2a;
   color: #fff;
   padding: 20px;
@@ -8,7 +9,7 @@ export const StyledFooter = styled.footer`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	width: 100%;
+	
   span {
 		font-size: 1.2em;
     font-weight: bold;

@@ -6,6 +6,7 @@ export const StyledContainer = styled.div`
   justify-content: space-around;
   margin: 0 auto;
   flex-wrap: wrap;
+	
   ${
 	({ styleHeight }) =>
 		styleHeight &&

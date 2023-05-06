@@ -66,7 +66,6 @@ export function ProjectForm (){
 		} catch (err) {
 			notifyErr();
 		}
-
 	}
 	useEffect(
 		() => {

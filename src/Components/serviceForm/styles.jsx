@@ -27,6 +27,7 @@ export const FormForService = styled.div`
 		width: 100%;
 		display: flex;
 		flex-direction: row;
+		justify-content: center;
 		flex-wrap: wrap;
 		gap: 5%;
 		padding: 3%;
@@ -62,6 +63,7 @@ export const FormForService = styled.div`
     color: #415a77;
     border-radius: 10px;
   }
+	
 	.create-service{
 		width: 100px;
 		height: 60px;
