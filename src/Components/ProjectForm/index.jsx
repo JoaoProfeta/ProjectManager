@@ -7,7 +7,7 @@ import { Select } from "../Select";
 import { StyledProjectForm } from "./styles";
 export function ProjectForm (){
 	const unicId = uuid();
-	const [	categories,setCategories ] = useState([]);
+	const [	category,setCategory ] = useState([]);
 	const [ projects,setProjects	] = useState({});
 	const [ userProjects,setUserProjects ] = useState([]);
 	const [ selectedCategory,setSelectedCategory ] = useState(0);
@@ -40,8 +40,8 @@ export function ProjectForm (){
 	useEffect(
 		() => {
 			if (logged) {
-				const getCategories = JSON.parse(localStorage.getItem("categories"));
-				setCategories(getCategories);
+				const getCategory = JSON.parse(localStorage.getItem("Category"));
+				setCategory(getCategory);
 				const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
 			 	const getProjects = loggedInUser.projects || [];
 				setUserProjects(getProjects);
@@ -59,7 +59,7 @@ export function ProjectForm (){
 		e.preventDefault();
 		try{
 			notifySucess();
-			const categoryFind = categories.find((c) => c.name == selectedCategory);
+			const categoryFind = category.find((c) => c.name == selectedCategory);
 		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
 			setUserProjects([ ...userProjects,newProject ]);
 			
@@ -105,7 +105,7 @@ export function ProjectForm (){
 				<Select
 					name="category"
 					text="Select category"
-					options={categories}
+					options={category}
 					handleOnChange={handleCategoryProjects}
 					value={selectedCategory}		
 				/>

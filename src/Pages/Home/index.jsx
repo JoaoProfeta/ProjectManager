@@ -6,6 +6,8 @@ import headerlogo from "../../assets/headerlogo.svg";
 import magnament from "../../assets/magnamentproject.svg";
 import { StyledHome } from "./styles";
 export function Home () {
+	
+	
 
 	return (
 		<StyledHome>

@@ -11,13 +11,19 @@ export const ServiceForm = () => {
 	const location = useLocation();
 	const getIdProjectSelected = location.state.userId;
 	const [ pickProjects, setPickProjects ] = useState([]);
+	const [ usersFind, setUsersFind ] = useState([]);
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 	const getProjectsLoggedUser = loggedInUser.projects;
 	const { register,handleSubmit	} = useForm({});
+	
 	useEffect(()=>{
+		const users = JSON.parse(localStorage.getItem("users"));
+		setUsersFind(users);
+		console.log(usersFind);
 		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== getIdProjectSelected);		
 		setPickProjects([...filterProjectsRest]);		
 	},[]);
+	
 	const notifySucess = () => {
 		toast.success("Project Deleted successfully!!!", {
 			position: "top-left",
@@ -43,7 +49,7 @@ export const ServiceForm = () => {
 		});
 	};
 	function submit({ name,cost,description }) {
-		
+
 		try{
 			console.log({ name,cost,description });
 			const filterUserForAddServices = getProjectsLoggedUser.find((project) => project.id === getIdProjectSelected);
@@ -78,7 +84,12 @@ export const ServiceForm = () => {
 			const filterServiceForDelete = servicesByProjectSelected.find((service)=> service.id === getIdForDeleteService);
 			const updateProjectAfterServiceDelete = { ...projectSelected, services:filterServiceRest };
 			const updateProjects = [ ...projectRest, updateProjectAfterServiceDelete ];
-			localStorage.setItem("loggedInUser",JSON.stringify({ ...userLogged, projects:updateProjects }));	
+			localStorage.setItem("loggedInUser",JSON.stringify({ ...userLogged, projects:updateProjects }));
+			if(usersFind.length > 0){
+				const getNewConfigLoggedUser = JSON.parse(localStorage.getItem("loggedInUser")); 
+				const filterDifferentUsers = usersFind.filter((user)=> user.id !== getNewConfigLoggedUser.id);
+				localStorage.setItem("users",JSON.stringify([ ...filterDifferentUsers,getNewConfigLoggedUser ]));
+			}
 			setTimeout(()=>{
 				window.location.reload();
 			},2800);
