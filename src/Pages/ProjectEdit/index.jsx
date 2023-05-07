@@ -44,7 +44,7 @@ export const ProjectEdit = () => {
 		() => {
 			setPickProjects(loggedInUser.projects);		
 			if (logged) {	
-				const getCategories = JSON.parse(localStorage.getItem("categories"));
+				const getCategories = JSON.parse(localStorage.getItem("Category"));
 				setCategories(getCategories);
 			}
 		},
