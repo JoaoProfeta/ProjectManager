@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledFooter = styled.footer`
+
 	width: 100%;
   background-color: #0d1b2a;
   color: #fff;
@@ -40,5 +41,15 @@ export const StyledFooter = styled.footer`
 	}
 	.social li:hover{
 		color: #778da9;
+	}
+	@media (max-width:710px) {
+		&{
+			flex-direction: column;
+			align-items: center;
+			
+		}
+		div{
+			margin-bottom: 5%;
+		}
 	}
 `;

@@ -14,7 +14,17 @@ body{
 	background-color: #1b263b;
 	height: 100%;
 	width: 100%;
-	
+}
+html{
+	scroll-behavior: smooth;
+
 
 }
-
+::-webkit-scrollbar{
+	width: 7px;
+}
+::-webkit-scrollbar-thumb{
+	width: 7px;
+	border-radius:10px;
+	background-color: #778da9;
+}

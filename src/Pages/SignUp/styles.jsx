@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledSignUp = styled.div`
 	width: 100vw;
-	height: 80vh;
+	height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
