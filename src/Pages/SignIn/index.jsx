@@ -4,27 +4,59 @@ import bcrypt from "bcryptjs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { signInFormSchema } from "../../services/validators/signIn";
 import { StyledSign } from "./styles";
-export function LoginPage () {
+export function SignIn () {
 	const navigate = useNavigate();
+	const notifyErr = () => {
+		toast.error("Verify that the password and email are correct!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
 	const { register,handleSubmit, formState: { errors } } = useForm({
 		resolver: yupResolver(signInFormSchema),
 	});
 	const handleOnSubmit = ({ email,password }) => {
-		
-		navigate("/");
+		const users = JSON.parse(localStorage.getItem("users")) || [];
 		const pickingUpPasswordSignIn = password;
+		
 		const decryptPassword = (passwordFind,storedPassword) => {
 			return bcrypt.compareSync(passwordFind,storedPassword);
 		};
-		const users = JSON.parse(localStorage.getItem("users")) || [];
-		const user = users.find((user) => user.email === email && decryptPassword(pickingUpPasswordSignIn,user.token)===true);
-		if (user) {
-			return localStorage.setItem(
-				"loggedInUser",
-				JSON.stringify(user)
-			);
+	
+		const emailVerification = users.find((user)=> user.email === email ? true : false);
+		
+		const passwordVerification = users.find((user)=> user.email === email);
+		
+		
+		if(!!emailVerification === true){
+			if(decryptPassword(pickingUpPasswordSignIn,passwordVerification.token) === true){
+				const user = users.find((user) => user.email === email && decryptPassword(pickingUpPasswordSignIn,user.token)=== true);
+				navigate("/");
+				if (user) {
+					return localStorage.setItem(
+						"loggedInUser",
+						JSON.stringify(user)
+						
+					);
+					
+				}
+				
+			}else{
+
+				notifyErr();
+			}
+		}else{
+			notifyErr();
+
 		}
 
 	};
@@ -86,6 +118,19 @@ export function LoginPage () {
 				</div>
 
 			</form>
+			<ToastContainer
+				position="top-left"
+				autoClose={2000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable
+				pauseOnHover={false}
+				theme="light"
+				role="alert"
+			/>
 		</StyledSign>
 	);
 

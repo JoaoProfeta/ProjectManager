@@ -2,18 +2,31 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import bcrypt from "bcryptjs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
 import { signUpFormSchema } from "../../services/validators/signUp";
 import { StyledSignUp } from "./styles";
 
-export function CadastroPage() {
-	
+export function SignUp() {
+	const navigate = useNavigate();
+	const notifySucess = () => {
+		toast.success("Account created successfully!!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
 	const { register,formState : { errors }, handleSubmit } = useForm({
 		resolver: yupResolver(signUpFormSchema)
 	});
 	const handleOnSubmit=({ email,userName,password, id })=> {
-
+		
 		const projects = [];
 		id=uuid();
 		const getPassword = password;
@@ -27,13 +40,14 @@ export function CadastroPage() {
 		const getUsers = JSON.parse(localStorage.getItem("users")) || []; 
 		const userAddInLocalStorage	= [ ...getUsers, UserFindLocalStorage ];
 		localStorage.setItem("users", JSON.stringify(userAddInLocalStorage));
-
+		notifySucess();
+		navigate("/signIn");
 	};
 	const [ change,setChange ] = useState(false);
 	const onSubmit = () => {
 		setChange(false);
 	};
-
+	
 	return (
 		<StyledSignUp>
 			<form action="" onSubmit={handleSubmit(handleOnSubmit)}>
@@ -119,6 +133,19 @@ export function CadastroPage() {
 					</Link>
 				</div>
 			</form>
+			<ToastContainer
+				position="top-left"
+				autoClose={2000}
+				hideProgressBar={true}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss={false}
+				draggable
+				pauseOnHover={false}
+				theme="light"
+				role="alert"
+			/>
 		</StyledSignUp>
 	);
 }
