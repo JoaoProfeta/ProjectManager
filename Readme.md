@@ -23,6 +23,12 @@ After logging in, the user will have access to the other pages.
 	<li><b>Project Edit</b> - Where is the addition/correction of things that needed to be added to the project card done.</li>
 </ul>
 
+<video width="320" height="240" controls>
+       <source src="/src/assets/portfolio.mp4" type="video/mp4">
+</video>
+
+
+
 ## 🛠️ Built with
 <hr/>
 This project was developed with the following technologies:
