@@ -18,7 +18,7 @@ export const StyledProjectForm = styled.div`
 			color: #fff;
 			box-shadow: 1px 1px 20px 5px #415a77;
 		}
-		button{
+		.button-create{
 			width: 100%;
 			height: 35px;
 			border-radius: 10px;
@@ -29,7 +29,7 @@ export const StyledProjectForm = styled.div`
 			cursor:pointer;
 			margin: 0 auto;
 		}
-		button:hover{
+		.button-create:hover{
 		background-color: #1b263b;
 		}
        

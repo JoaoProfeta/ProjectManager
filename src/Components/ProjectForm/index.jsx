@@ -1,95 +1,85 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { v4 as uuid } from "uuid";
 import { Input } from "../Input";
 import { Select } from "../Select";
-import { Submit } from "../SubmitButton";
 import { StyledProjectForm } from "./styles";
-
 export function ProjectForm (){
 	const unicId = uuid();
-	const [	categories,setCategories ] = useState([]);
-	
+	const [	category,setCategory ] = useState([]);
 	const [ projects,setProjects	] = useState({});
-		
-	 const [ userProjects,setUserProjects ] = useState([]);
-		
-	 const [ selectedCategory,setSelectedCategory ] = useState(0);
-	
+	const [ userProjects,setUserProjects ] = useState([]);
+	const [ selectedCategory,setSelectedCategory ] = useState(0);
 	const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
-	
 	const logged = !!userLoggedIn;
-	
+	const notifySucess = () => {
+		toast.success("Project Deleted successfully!!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
+	const notifyErr = () => {
+		toast.error("Project deleted error!!!", {
+			position: "top-left",
+			autoClose: 2000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: false,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	};
 	useEffect(
 		() => {
-
 			if (logged) {
-
-				const getCategories = JSON.parse(localStorage.getItem("categories"));
-				
-				setCategories(getCategories);
-
+				const getCategory = JSON.parse(localStorage.getItem("Category"));
+				setCategory(getCategory);
 				const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || [];
 			 	const getProjects = loggedInUser.projects || [];
 				setUserProjects(getProjects);
-				
 			}
-
 		},
 		[]
 	);
-	
 	function handleChange (e) {
-
 		setProjects({ ...projects, [e.target.name]: e.target.value });
-
 	}
-
 	const handleCategoryProjects =(e)=> {
-
 		setSelectedCategory(e.target.value);
-
-
 	};
-
-	function handleSubmitForm (e) {
+	function handleSubmitForm (e){
 		e.preventDefault();
-		const categoryFind = categories.find((c) => c.name == selectedCategory);
-
+		try{
+			notifySucess();
+			const categoryFind = category.find((c) => c.name == selectedCategory);
 		 const newProject = { name: projects.name, budget: projects.budget, id: unicId, category: categoryFind.name,services:[]};
-		
-		setUserProjects([
-			...userProjects,
-			newProject
-		]);
-
+			setUserProjects([ ...userProjects,newProject ]);
+			
+		} catch (err) {
+			notifyErr();
+		}
 	}
-
 	useEffect(
 		() => {
-
 			if (logged) {
-
 				const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
 				const updatedUser = { ...loggedInUser, projects: userProjects };
-
-				localStorage.setItem(
-					"loggedInUser",
-					JSON.stringify(updatedUser)
-				);
-
+				localStorage.setItem("loggedInUser",JSON.stringify(updatedUser));
 				const usersCopied = JSON.parse(localStorage.getItem("users") || []);
-
 				const userFiltrado = usersCopied.find((user) => user.email != userLoggedIn.email);
-
 				localStorage.setItem("users",JSON.stringify([ userFiltrado,updatedUser ]));
-
 			}
-
 		},
 		[userProjects]
 	);
-	
 	return (
 		<StyledProjectForm >
 			
@@ -115,14 +105,25 @@ export function ProjectForm (){
 				<Select
 					name="category"
 					text="Select category"
-					options={categories}
+					options={category}
 					handleOnChange={handleCategoryProjects}
-					value={selectedCategory}
-					
+					value={selectedCategory}		
 				/>
-				<button>Create project</button>
+				<ToastContainer
+					position="top-left"
+					autoClose={2000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss={false}
+					draggable
+					pauseOnHover={false}
+					theme="light"
+					role="alert"
+				/>
+				<button className="button-create">Create project</button>
 			</form>
-
 		</StyledProjectForm>
 	);
 

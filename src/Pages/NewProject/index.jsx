@@ -9,11 +9,9 @@ export function NewProject () {
       	<h1>
         	Create a project
       	</h1>
-
       	<p>
 					Create your project and then add your services
 			  </p>
-
 			<ProjectForm />
 		</StyledNewProject>
 	);

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const EditCard = styled.div`
     padding: 2em;
-
 		width: 100%;
 		min-height: 75vh;
 		display: flex;
@@ -17,12 +16,12 @@ export const EditCard = styled.div`
 			width: 400px;
 			height: 400px;
 			background-color: #0d1b2a;
-			padding: 5%;
+			padding: 2%;
 			border-radius: 10px;
 			color: #fff;
 			box-shadow: 1px 1px 20px 5px #415a77;
 		}
-		button{
+		.button-save-change{
 			width:100%;
 			height: 35px;
 			border-radius: 10px;
@@ -33,7 +32,7 @@ export const EditCard = styled.div`
 			cursor:pointer;
 			margin: 0 auto;
 		}
-		button:hover{
+		.button-save-change:hover{
 		background-color: #1b263b;
 		}
 

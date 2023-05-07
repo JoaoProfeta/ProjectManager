@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-
-
 export const StyledSignUp = styled.div`
 	width: 100vw;
 	height: 80vh;
@@ -64,13 +62,7 @@ export const StyledSignUp = styled.div`
 	.error{
 		color: red;
 		display: block;
-
 	}
   
-
-
 `;
 
-export const Text = styled.div`
-  text-align: center;
-`;

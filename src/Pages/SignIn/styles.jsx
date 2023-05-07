@@ -62,6 +62,5 @@ export const StyledSign = styled.div`
 	.error{
 		color: red;
 		display: block;
-
 	}
 `;

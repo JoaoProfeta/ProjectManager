@@ -1,7 +1,4 @@
-/* eslint-disable no-undef */
-
 import { StyledInput } from "./Styles";
-
 
 export const Input = ({ text, name, handleOnChange, ...rest }) => {
 	return (

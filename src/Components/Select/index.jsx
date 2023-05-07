@@ -18,7 +18,7 @@ export const Select = ({
 				onChange={handleOnChange}
 				value={value || ""}
 			>
-				<option>--</option>
+				<option >--</option>
 				{options.map((option) => (
 					<>
 						<option

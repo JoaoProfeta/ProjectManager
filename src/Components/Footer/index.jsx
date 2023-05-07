@@ -1,6 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { StyledFooter } from "./styles";
 export const Footer = () => {
+
 	return (
 		<StyledFooter>
 			<div id="contact-container">
@@ -12,7 +13,7 @@ export const Footer = () => {
 				</ul>
 			</div>
 			<div className="copy_right">
-				<span>Todos os direitos reservados</span> &copy; 2023
+				<span>All rights reserved</span> &copy; 2023
 			</div>
 			<div>
 				<p>Social networks</p>
@@ -28,7 +29,7 @@ export const Footer = () => {
 					</li>
 				</ul>
 			</div>
-      
 		</StyledFooter>
 	);
+	
 };

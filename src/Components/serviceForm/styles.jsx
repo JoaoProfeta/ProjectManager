@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const FormForService = styled.div`
      width: 100%;
      margin:2em 0;
@@ -9,8 +8,7 @@ export const FormForService = styled.div`
 		 flex-direction: row;
 		 flex-wrap: wrap;
 		 justify-content: center;
-		 align-items: end;
-		 
+		 align-items: end; 
 	form {
     display: flex;
     flex-direction: row;
@@ -24,12 +22,12 @@ export const FormForService = styled.div`
     border-radius: 10px;
     color: #fff;
     box-shadow: 1px 1px 20px 5px #415a77;
-
   }
 	#services-container{
 		width: 100%;
 		display: flex;
 		flex-direction: row;
+		justify-content: center;
 		flex-wrap: wrap;
 		gap: 5%;
 		padding: 3%;
@@ -46,10 +44,8 @@ export const FormForService = styled.div`
   label {
 		width: 48%;
     display: flex;
-    flex-direction: column;
-		
-    font-size: 1.2em;
-    
+    flex-direction: column;	
+    font-size: 1.2em; 
   } 
 	#description-label{
 		width: 85%;
@@ -62,13 +58,12 @@ export const FormForService = styled.div`
     text-decoration: none;
     color: #778da9;
     padding: 5px;
-    
   }
   a:hover{
     color: #415a77;
     border-radius: 10px;
-
   }
+	
 	.create-service{
 		width: 100px;
 		height: 60px;
@@ -84,5 +79,4 @@ export const FormForService = styled.div`
 	.create-service:hover{
 		background-color: #415a77;
 	}
-	
 `;

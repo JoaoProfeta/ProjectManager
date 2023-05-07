@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { StyledProjectCard } from "./styles";
 
-export const ProjectCard = ({ name,id,budget,category,cost,handleDelete,disabled,...rest }) =>{
+export const ProjectCard = ({ name,id,budget,category,handleDelete,disabled,...rest }) =>{
 	const navigate = useNavigate();
 
 	return (
@@ -15,31 +15,22 @@ export const ProjectCard = ({ name,id,budget,category,cost,handleDelete,disabled
 			<div className="projects">
 				<span>Category:</span>{category}
 			</div>
-			<div className="projects">
-				<span>Total cost used:</span>{cost}
-			</div>
 			<div className="buttons-container">
 				<button 
 					disabled={disabled}
 					onClick={()=>{
 						navigate(`/project/${id}`,{ state:{ id: id,name:name,budget:budget,category:category } });
 					}} id={id}>Edit</button>
-				
 				<button 
 					disabled={disabled}
 					onClick={()=>{
 					 navigate(`/services/${id}`,{ state:{ userId: id } });
 					}}>Services</button>
-
-			
 				<button 
 					id={id}
 					disabled={disabled}
 					onClick={handleDelete}
-
-				>Delete</button>
-		
-				
+				>Delete</button>		
 			</div>
 		</StyledProjectCard>
 	);
