@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "backend": "json-server --watch db.json --port 5000"
+    "backend": "json-server --watch db.json --port 7000"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
