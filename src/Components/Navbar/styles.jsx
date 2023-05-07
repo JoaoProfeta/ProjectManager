@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledNav = styled.div`
+export const StyledNav = styled.header`
   display: flex;
   justify-content: space-around;
   background-color:#0d1b2a;

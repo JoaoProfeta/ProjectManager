@@ -22,7 +22,7 @@ export const NavBar = () => {
 		<StyledNav>
 			<Container >
 				<Link to="/" className="logo">
-					<h1>ManagerProjects</h1>
+					<h1>ProjectManager</h1>
 				</Link>
 				<ul>
 					{
