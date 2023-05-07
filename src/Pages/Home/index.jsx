@@ -15,7 +15,7 @@ export function Home () {
 				<h1>
           Welcome to your
 					<span>
-							Manager projects
+							Project manager
 					</span>
 				</h1>
 			</div>

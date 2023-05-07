@@ -65,7 +65,7 @@ export const ServiceForm = () => {
 				logged
 			]));
 			setTimeout(()=>{
-				window.location.reload();
+				location.reload();
 			},2800);
 			
 		} catch(error){

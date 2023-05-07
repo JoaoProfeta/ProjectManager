@@ -7,7 +7,7 @@ export const Footer = () => {
 			<div id="contact-container">
 				<p>Contact</p>
 				<ul className="contact">
-					<li>E-mail: managerprojects@hotmail.com</li>
+					<li>E-mail: projectmanager@hotmail.com</li>
 					<li>Tel: (99)88999-0099</li>
 					<li>Fix: 0800 000000</li>
 				</ul>
