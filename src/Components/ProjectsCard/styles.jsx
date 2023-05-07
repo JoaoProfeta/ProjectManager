@@ -52,9 +52,6 @@ export const StyledProjectCard = styled.div`
 		width: 60px;
 	}
 
-	@media () {
-		
-	}
 	
 
 `;

@@ -74,8 +74,8 @@ export function ProjectForm (){
 				const updatedUser = { ...loggedInUser, projects: userProjects };
 				localStorage.setItem("loggedInUser",JSON.stringify(updatedUser));
 				const usersCopied = JSON.parse(localStorage.getItem("users") || []);
-				const userFiltrado = usersCopied.find((user) => user.email != userLoggedIn.email);
-				localStorage.setItem("users",JSON.stringify([ userFiltrado,updatedUser ]));
+				const userFiltrado = usersCopied.filter((user) => user.email != userLoggedIn.email);
+				localStorage.setItem("users",JSON.stringify([ ...userFiltrado,updatedUser ]));
 			}
 		},
 		[userProjects]

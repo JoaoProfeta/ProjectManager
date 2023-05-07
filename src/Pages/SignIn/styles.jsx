@@ -7,7 +7,6 @@ export const StyledSign = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-	border: 1px solid red;
   form {
     display: flex;
     flex-direction: column;
