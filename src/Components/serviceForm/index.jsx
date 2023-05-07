@@ -51,6 +51,7 @@ export const ServiceForm = () => {
 	function submit({ name,cost,description }) {
 
 		try{
+			notifySucess();
 			console.log({ name,cost,description });
 			const filterUserForAddServices = getProjectsLoggedUser.find((project) => project.id === getIdProjectSelected);
 			const newService = { name,cost,description,id:unicId };
@@ -152,7 +153,6 @@ export const ServiceForm = () => {
 				<button
 					className="create-service"
 					type="submit"
-					onClick={notifySucess}
 				>
 						Create service
 				</button>
