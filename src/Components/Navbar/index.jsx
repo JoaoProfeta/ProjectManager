@@ -10,8 +10,8 @@ export const NavBar = () => {
 		{ to: "/", name: "Home", id: 1, key: "home", loggedIn: true },
 		{ to: "/projects", name: "Projects", id: 3, key: "projects", loggedIn: logged },
 		{ to: "/newproject", name: "New Project", id: 4, key: "newproject", loggedIn: logged },
-		{ to: "/login", name: "SignIn", id: 5, key: "login", loggedIn: !logged },
-		{ to: "/cadastro", name: "SignUp", id: 6, key: "cadastro", loggedIn: !logged }
+		{ to: "/signIn", name: "SignIn", id: 5, key: "signIn", loggedIn: !logged },
+		{ to: "/signUp", name: "SignUp", id: 6, key: "signUp", loggedIn: !logged }
 	].filter((item) => item.loggedIn === true);
 	const exitUser = () => {
 		localStorage.removeItem("loggedInUser");
