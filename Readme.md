@@ -24,14 +24,14 @@ After logging in, the user will have access to the other pages.
 </ul>
 
 <div>
-<img alt="Home Page" src="./src/assets/home.png" width="300px">
-<img alt="Home Page" src="./src/assets/home-footer.png" width="300px">
-<img alt="SignIn Page" src="./src/assets/sign-in.png" width="300px">
-<img alt="SignUp Page" src="./src/assets/sign-up.png" width="300px">
-<img alt="Projects Page" src="./src/assets/projects.png"  width="300px">
-<img alt="Create Projects Page" src="./src/assets/create-projects.png" width="300px">
-<img alt="Create Services For Projects Page" src="./src/assets/area-add-services.png" width="300px">
-<img alt="Edit Project Page" src="./src/assets/edit-projects.png" width="300px">
+<img alt="Home Page" src="./src/assets/home.png" width="400px">
+<img alt="Home Page" src="./src/assets/home-footer.png" width="400px">
+<img alt="SignIn Page" src="./src/assets/sign-in.png" width="400px">
+<img alt="SignUp Page" src="./src/assets/sign-up.png" width="400px">
+<img alt="Projects Page" src="./src/assets/projects.png"  width="400px">
+<img alt="Create Projects Page" src="./src/assets/create-projects.png" width="400px">
+<img alt="Create Services For Projects Page" src="./src/assets/area-add-services.png" width="400px">
+<img alt="Edit Project Page" src="./src/assets/edit-projects.png" width="400px">
 </div>
 
 
