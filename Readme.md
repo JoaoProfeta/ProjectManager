@@ -23,9 +23,16 @@ After logging in, the user will have access to the other pages.
 	<li><b>Project Edit</b> - Where is the addition/correction of things that needed to be added to the project card done.</li>
 </ul>
 
-<video width="320" height="240" controls>
-       <source src="/src/assets/portfolio.mp4" type="video/mp4">
-</video>
+<div>
+<img alt="Home Page" src="./src/assets/home.png" width="300px">
+<img alt="Home Page" src="./src/assets/home-footer.png" width="300px">
+<img alt="SignIn Page" src="./src/assets/sign-in.png" width="300px">
+<img alt="SignUp Page" src="./src/assets/sign-up.png" width="300px">
+<img alt="Projects Page" src="./src/assets/projects.png"  width="300px">
+<img alt="Create Projects Page" src="./src/assets/create-projects.png" width="300px">
+<img alt="Create Services For Projects Page" src="./src/assets/area-add-services.png" width="300px">
+<img alt="Edit Project Page" src="./src/assets/edit-projects.png" width="300px">
+</div>
 
 
 
