@@ -19,7 +19,6 @@ export const ServiceForm = () => {
 	useEffect(()=>{
 		const users = JSON.parse(localStorage.getItem("users"));
 		setUsersFind(users);
-		console.log(usersFind);
 		const filterProjectsRest = getProjectsLoggedUser.filter((project) => project.id !== getIdProjectSelected);		
 		setPickProjects([...filterProjectsRest]);		
 	},[]);
@@ -104,6 +103,8 @@ export const ServiceForm = () => {
 			<div id="services-container">
 				{!!servicesByProjectSelected &&
 					servicesByProjectSelected.map((service)=>{
+						console.log(Number([service.cost]));
+
 						return(
 							<ServiceCard
 								id={service.id}

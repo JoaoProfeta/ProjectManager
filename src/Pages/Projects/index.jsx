@@ -5,6 +5,11 @@ import { StyledProjects, TitleContainer } from "./styles";
 export const Projects = () => {
 
 	const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+	const getServices = loggedInUser.projects;
+	const calcServices = getServices.map((service)=>{
+
+	});
+	
 	const [ project, setProject ] = useState([]);
 	useEffect(()=>{
 		const getUserLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -65,6 +70,11 @@ export const Projects = () => {
 			
 				{project.length > 0 &&
         project.map((projects) => {
+        	
+        	const splitServices = projects.services;
+        	const sum = splitServices.map((item)=>parseFloat(item.cost)).reduce((prev, curr)=> prev + curr, 0);
+        	console.log(sum);
+        
         	return (
         		
           		<ProjectCard
@@ -73,6 +83,7 @@ export const Projects = () => {
           		budget={projects.budget}
           		category={projects.category}
         			key={projects.id}
+        			cost={sum}
         			handleDelete={deleteProjectCardSelected}
           		/>
 							
