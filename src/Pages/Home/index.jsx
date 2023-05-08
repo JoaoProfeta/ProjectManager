@@ -6,7 +6,16 @@ import headerlogo from "../../assets/headerlogo.svg";
 import magnament from "../../assets/magnamentproject.svg";
 import { StyledHome } from "./styles";
 export function Home () {
-	
+
+	const category = [
+		{ id: 1, name:"Desenvolvimento Front-End" },
+		{ id: 2, name:"Desenvolvimento Back-End" },
+		{ id: 3, name:"Design" },		
+		{ id: 4, name: "Maintenance" },
+		{ id: 5, name: "Landing page" },
+		{ id: 6, name: "E-Commerce" }
+	];
+	localStorage.setItem("Category",JSON.stringify(category));
 	
 
 	return (
