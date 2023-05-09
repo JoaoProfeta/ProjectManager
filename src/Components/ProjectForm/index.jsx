@@ -14,7 +14,7 @@ export function ProjectForm (){
 	const userLoggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
 	const logged = !!userLoggedIn;
 	const notifySucess = () => {
-		toast.success("Project Deleted successfully!!!", {
+		toast.success("Project create successfully!!!", {
 			position: "top-left",
 			autoClose: 2000,
 			hideProgressBar: false,
@@ -26,7 +26,7 @@ export function ProjectForm (){
 		});
 	};
 	const notifyErr = () => {
-		toast.error("Project deleted error!!!", {
+		toast.error("Project create error!!!", {
 			position: "top-left",
 			autoClose: 2000,
 			hideProgressBar: false,
