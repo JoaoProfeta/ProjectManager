@@ -22,7 +22,7 @@ After logging in, the user will have access to the other pages.
 	<li><b>Services</b> - Where is the addition of services in the selected projects.</li>
 	<li><b>Project Edit</b> - Where is the addition/correction of things that needed to be added to the project card done.</li>
 </ul>
-
+<a href="https://master--lustrous-croissant-d1d8cf.netlify.app/" target="_blank">Click and have your experience with the project</a>
 <div>
 <img alt="Home Page" src="./src/assets/home.png" width="400px">
 <img alt="Home Page" src="./src/assets/home-footer.png" width="400px">
